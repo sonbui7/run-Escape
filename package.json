@@ -1,0 +1,44 @@
+{
+  "name": "project2_thesql",
+  "version": "0.1.0",
+  "description": "it's a sql game",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icedragon668/Project2_theSQL.git"
+  },
+  "keywords": [
+    "game",
+    "sql"
+  ],
+  "author": "Kori",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/icedragon668/Project2_theSQL/issues"
+  },
+  "homepage": "https://github.com/icedragon668/Project2_theSQL#readme",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "materialize-css": "^1.0.0-rc.2",
+    "mysql2": "^1.6.5",
+    "path": "^0.12.7",
+    "sequelize": "^4.42.1",
+    "if-env": "^1.0.4",
+    "axios": "^0.16.2"
+  }
+}

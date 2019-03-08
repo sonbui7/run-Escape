@@ -1,0 +1,47 @@
+
+Title: the Game: Linck's SQL
+Team Member:
+  -Lin
+  -Son
+  -Andrew (L)
+  -Kori
+Project Description:
+ Text RPG game. Explore the world; Fight Monsters; ???; PROFT!
+ MVP: unique users can log in and play. Explore new areas and meet npcs
+ Initial User Stories:
+  i want...
+   to log in and play
+   be able to explore freely
+   make a toon
+   interact with NPC
+   Compare with other users
+   fight Monsters
+   sell loot
+   get stronger
+
+-IceBox
+  luck
+  crafting
+  armor/useable items
+  leveling
+  trade with players
+  have fun
+Sketch of Product:
++--------------------+  +----Sign In----+  +-------Sign Up------+
+|      Sign In?      |  | User: ___     |  | User: ___          |
+|     New Player?    |  | Password: ___ |  | Password: ___      |
+|                    |  |               |  | Character: ___     |
++--------------------+  +---------------+  +--------------------+
+
+                          +---------+
+                          | Start!  |
+                          +---------+
+
+     +-----------+   +-----------------------+  +--------+
+     |   TOWN    |-->| FOREST: ENCOUNTER     |  | BATTLE |
+     | {explore} |-->| {you found a goblin!} |  |        |
+     +-----------+   +-----------------------+  +--------+
+
+  Tasks:
+   everybody: coding 
+   
