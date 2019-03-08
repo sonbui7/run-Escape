@@ -42,7 +42,7 @@ module.exports = function(connection, Sequelize) {
         inventory: {
             type: Sequelize.TEXT,
             allowNull: false,
-            default: "{}",
+            default: "[]",
             validate: {
                 notEmpty: true
             }

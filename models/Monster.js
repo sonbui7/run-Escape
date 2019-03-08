@@ -7,22 +7,8 @@ module.exports = function (connection, Sequelize) {
                 notEmpty: true
             }
         },
-        attack: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
-        speed: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
-        hp: {
-            type: Sequelize.INTEGER,
+        stats: {
+            type: Sequelize.TEXT,
             allowNull: false,
             validate: {
                 notEmpty: true
@@ -35,13 +21,6 @@ module.exports = function (connection, Sequelize) {
         gold: {
             type: Sequelize.INTEGER,
             allowNull: true,
-        },
-        xp: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
         }
     });
 
