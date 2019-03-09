@@ -1,0 +1,1 @@
+//goto hit?? or hit in battle?

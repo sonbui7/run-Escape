@@ -66,13 +66,14 @@ module.exports = function (app) {
         })
     });
 
-    app.post("/api/users/create", function (req, res) {
-        db.Player.create(req.body);
-    }).then(function (result) {
-        res.json(result);
-    }).catch(function (err) {
-        res.json(err);
-    });
+    ///ignore or replace
+    // app.post("/api/users/create", function (req, res) {
+    //     db.Player.create(req.body);
+    // }).then(function (result) {
+    //     res.json(result);
+    // }).catch(function (err) {
+    //     res.json(err);
+    // });
 
     /*
     app.put('/api/inventory', function (req, res) { 
