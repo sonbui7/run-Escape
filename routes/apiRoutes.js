@@ -25,10 +25,10 @@ module.exports = function (app) {
     });
 
     //update user data
-    app.post("/api/users/:id", function (req, res) {
+    app.put("/api/users/:id", function (req, res) {
         db.Player.update(req.body, {
             where: {
-                id: sessionStorage.getItem("token")
+                id: req.params.id
             }
         }).then(function (data) {
             res.json(data);
@@ -54,10 +54,18 @@ module.exports = function (app) {
         });
     });
 
+    app.post("/api/item", function(req, res){
+        db.Item.create(req.body).then(function(item){
+            res.json(item);
+        }).catch(function(err){
+            res.json(err);
+        });
+    });
+
     app.get("/api/item/:id", function (req, res) {
         db.Item.findOne({
             where: {
-                itemname: req.body.itemName
+                id: req.params.id
             }
         }).then(function (item) {
             res.json(item);
@@ -67,12 +75,12 @@ module.exports = function (app) {
     });
 
     app.post("/api/users/create", function (req, res) {
-        db.Player.create(req.body);
-    }).then(function (result) {
-        res.json(result);
-    }).catch(function (err) {
-        res.json(err);
-    });
+        db.Player.create(req.body).then(function (result) {
+            res.json(result);
+        }).catch(function (err) {
+            res.json(err);
+        });
+    })
 
     /*
     app.put('/api/inventory', function (req, res) { 

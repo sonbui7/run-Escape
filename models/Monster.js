@@ -8,7 +8,7 @@ module.exports = function (connection, Sequelize) {
             }
         },
         stats: {
-            type: Sequelize.TEXT,
+            type: Sequelize.JSON,
             allowNull: false,
             validate: {
                 notEmpty: true
