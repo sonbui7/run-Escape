@@ -1,0 +1,12 @@
+{
+  "CharName": "Bob",
+  "CharDmg": 2,
+  "CharSpd": 1,
+  "CharHp": 10,
+  "CharMods": 0,
+  "MonName": "Goblin",
+  "MonDmg": 1,
+  "MonSpd": 1,
+  "MonHp": 10,
+  "MonMods": 0
+}
