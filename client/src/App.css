@@ -1,7 +1,10 @@
 #gameTextBox {
   border-style: solid;
   color: lightgray;
-  width: 70%;
+  width: 60%;
+  position: fixed;
+  top: 72%;
+  left: 100px;
 }
 
 /* ---------------- Log-In page styling ---------------- */
@@ -12,8 +15,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 5%;
+  padding: 50px;
   border-radius: 20px;
+  width: 50%;
 }
 
 #signInBtnStyle,
@@ -27,8 +31,36 @@
 
 #signIn, #register {
   border-width: 30%;
+  text-align: center;
 }
 
 .homeInput {
   width: 35%;
+}
+
+/* ---------------- Town page styling ---------------- */
+
+#townShopBtn {
+  position: fixed;
+  left: 10%;
+}
+
+#townForestBtn {
+  position: fixed;
+  left: 30%;
+}
+
+#townMountainBtn {
+  position: fixed;
+  left: 50%;
+}
+
+#inventory {
+  border-style: solid;
+  border-color: lightslategrey;
+  position: fixed;
+  width: 22%;
+  height: 50%;
+  left: 72%;
+  top: 22%;
 }
