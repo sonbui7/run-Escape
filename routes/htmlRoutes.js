@@ -1,21 +1,21 @@
-const db = require("../models");
-const path = require("path")
+// const db = require("../models");
+// const path = require("path")
 
-module.exports = function(app) {
+// module.exports = function(app) {
 
-app.get('/', function(request, response){
-    response.sendFile(path.join(__dirname, "../public/index.html"));
-  });
+// app.get('/', function(request, response){
+//     response.sendFile(path.join(__dirname, "../public/index.html"));
+//   });
 
 
 
-  // vvvvvvvv these are served static vvvvvvvvv //
+//   // vvvvvvvv these are served static vvvvvvvvv //
   
-  // app.get('/js/app', function(request, response){
-  //   response.sendFile(path.join(__dirname, "../public/js/app.js"));
-  // });
+//   // app.get('/js/app', function(request, response){
+//   //   response.sendFile(path.join(__dirname, "../public/js/app.js"));
+//   // });
   
-  // app.get('/css/style', function(request, response){
-  //   response.sendFile(path.join(__dirname, "../public/css/style.css"));
-  // });
-}
+//   // app.get('/css/style', function(request, response){
+//   //   response.sendFile(path.join(__dirname, "../public/css/style.css"));
+//   // });
+// }

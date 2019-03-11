@@ -11,8 +11,8 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
 
-require(path.join(__dirname, "./routes/apiRoutes.js"))(app);
-require(path.join(__dirname, "./routes/htmlRoutes.js"))(app);
+// require(path.join(__dirname, "./routes/apiRoutes.js"))(app);
+// require(path.join(__dirname, "./routes/htmlRoutes.js"))(app);
 
 db.sequelize.sync({force:false}).then(function(){
     app.listen(PORT, function(){
