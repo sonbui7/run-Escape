@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';                                     //this was changed to render battle
+import App from './App';                                     //this is the base
 import * as serviceWorker from './serviceWorker';
 
-// import Battle from "./components/Battle"                        //this was changed to render battle
-// ReactDOM.render(<Battle />, document.getElementById('root'));   //this was changed to render battle
+// import Battle from "./components/Battle"                        //this is for battle
+// ReactDOM.render(<Battle />, document.getElementById('root'));   //this is for battle
 
-ReactDOM.render(<App />, document.getElementById('root'));   //this was changed to render battle
+// import Explore from "./components/Explore"                        //this is for explore
+// ReactDOM.render(<Explore />, document.getElementById('root'));   //this is for explore
+
+
+
+ReactDOM.render(<App />, document.getElementById('root'));   //this is the base
 
 serviceWorker.unregister();

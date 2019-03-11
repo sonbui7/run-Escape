@@ -2,7 +2,7 @@ import React from 'react';
 
 import FightOrFlee from './BattleLogic/FightOrFlee';   //choices
 
-import Hit from './BattleLogic/Hit';                   //choose fight
+import Fight from './BattleLogic/Fight';                   //choose fight
 import Flee from './BattleLogic/Flee';                 //choose flee
 
 import Win from './BattleLogic/Win';                   //kill mon
@@ -12,6 +12,7 @@ import Lose from './BattleLogic/Lose';                 //char dies
 
 import info from "./BattleLogic/TestInfo.json";        //replace with axios
 
+// import Inventory from "./Inventory"
 
 class Battle extends React.Component {
 
@@ -45,6 +46,7 @@ class Battle extends React.Component {
   componentDidMount() {  //initialization {set Chp, dmg modded by equip, etc.}
     //getChar & getMon
     console.log('mounted')
+    // Inventory.componentDidMount()
     this.setState({
       charChp: this.state.charHp,
       monChp: this.state.monHp,
@@ -168,7 +170,7 @@ class Battle extends React.Component {
     })
   }
 
-  // onUnMount(){db.PushResults}
+  // onUnMount(){db.PushResults/Rewards}
 
   render() {
     return (
@@ -176,7 +178,7 @@ class Battle extends React.Component {
         <header className="battle-header">
           <div>
             {this.state.fight === true ?
-              <Hit
+              <Fight
                 monSpd={this.state.monIni}
                 monDmg={this.state.monDmg}
                 mon={this.state.mon}
@@ -226,3 +228,26 @@ class Battle extends React.Component {
 }
 
 export default Battle;
+
+
+/*
+import React from "react"
+
+ const Enemy = () => (
+    <div class="container">
+        <div id="health"></div>
+        <div id="gameTextBox">
+            <button type="button" class="btn btn-primary">Action 1</button>
+            <button type="button" class="btn btn-primary">Action 2</button>
+            <button type="button" class="btn btn-primary">Action 3</button>
+            <button type="button" class="btn btn-primary">Action 4</button>
+        </div>
+
+         <button type="button" class="btn btn-primary">Escape</button>
+        <div id="playerLootBox">Gold: <br /> Loot:</div>
+        <button type="button" class="btn btn-primary">Back to town</button>
+    </div>
+)
+
+ export default Enemy 
+ */

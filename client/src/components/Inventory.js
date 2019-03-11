@@ -69,29 +69,29 @@ class Inventory extends React.Component {
         })
     }
 
-    obtainItem = (name, item, amount) => {
-        let copy = this.state.userInv.slice();
-        if (copy.findIndex(item => item.name === name) != -1) {
-            copy[copy.findIndex(item => item.name === name)].amount += amount;
-        } else if (copy.findIndex(item => item.name === name) = -1) {
-            copy.push({
-                itemName: name,
-                itemType: item.itemType,
-                itemProperties: item.itemProperties,
-                amount: amount
-            });
-        } else {
-            console.log("error, corrupted user inventory, please contact admin");
-        }
+    // obtainItem = (name, item, amount) => {
+    //     let copy = this.state.userInv.slice();
+    //     if (copy.findIndex(item => item.name === name) != -1) {
+    //         copy[copy.findIndex(item => item.name === name)].amount += amount;
+    //     } else if (copy.findIndex(item => item.name === name) = -1) {
+    //         copy.push({
+    //             itemName: name,
+    //             itemType: item.itemType,
+    //             itemProperties: item.itemProperties,
+    //             amount: amount
+    //         });
+    //     } else {
+    //         console.log("error, corrupted user inventory, please contact admin");
+    //     }
 
-        this.setState({
-            userInv: copy
-        })
-    }
+    //     this.setState({
+    //         userInv: copy
+    //     })
+    // }
 
     removeItem = (name, amount) => {
         let copy = this.state.userInv.slice();
-        if (copy.findIndex(item => item.name === name) != -1) {
+        if (copy.findIndex(item => item.name === name) !== -1) {
             copy[copy.findIndex(item => item.name === name)].amount -= amount;
         } else {
             console.log("error, corrupted user inventory, please contact admin");
@@ -104,7 +104,7 @@ class Inventory extends React.Component {
     }
 
     equipItem = (type, itemToEquip) => {
-        let copy = this.state.userInv.slice();
+        // let copy = this.state.userInv.slice();
         let copyEquip = Object.assign({}, this.state.userEquipped);
         let unequippedItem;
 
@@ -121,7 +121,14 @@ class Inventory extends React.Component {
         });
     }
 
+//Render??
+render() {
+    return (
+        <div className="Inventory">
 
+        </div>
+    )
+}
 
 
 
