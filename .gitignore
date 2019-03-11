@@ -61,4 +61,4 @@ typings/
 .next
 
 # the config & passwords
-config/
+config
