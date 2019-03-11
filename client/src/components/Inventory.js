@@ -12,13 +12,15 @@ class Inventory extends React.Component {
     state = {
         userBase: {
             attack: 1,
-            hp: 10,
+            maxHp: 10,
+            currentHp: 10,
             speed: 1
         },
         userInv: [],
         userStats: {
             attack: 0,
-            hp: 0,
+            maxHp: 0,
+            currentHp:0,
             speed: 0
         },
         userEquipped: {
@@ -28,7 +30,7 @@ class Inventory extends React.Component {
         }
     }
 
-    saveToDB = () => {
+    saveUserToDB = () => {
         axios.put("/api/users/" + sessionStorage.getItem("token"), {
             stats: this.state.userStats,
             inventory: this.state.userInv,
@@ -55,7 +57,7 @@ class Inventory extends React.Component {
             if (item.itemType === "Weapon") {
                 copy.attack = this.state.userBase.attack + item.itemProperties.effect;
             } else if (item.itemType === "Armor") {
-                copy.hp = this.state.userBase.hp + item.itemProperties.effect;
+                copy.maxHp = this.state.userBase.maxHp + item.itemProperties.effect;
             } else if (item.itemType === "Trinket") {
                 copy.speed = this.state.userBase.speed + item.itemProperties.effect;
             } else {
