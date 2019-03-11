@@ -1,9 +1,11 @@
 import React from 'react';
 
 const Shop = (props) => (
-    <div class="container">
-    <h2>Shop</h2>
+    <div>
+    <h2 class="shopHeader">Shop</h2>
+
         <button type="button" class="btn btn-primary" onClick={props.handleBackButton}>Back</button>
+
         <div class="row">
             <li class="list-group-item">Item 1</li>
             <li class="list-group-item">Gold</li>

@@ -18,7 +18,10 @@ class App extends Component {
     startGame: false,
     forestButton: false,
     mountainButton: false,
-    shopButton: false
+    shopButton: false,
+    enemyEncounter: false,
+    trapEncounter: false,
+    rewardEncounter: false
   }
   // When Log-In is pressed
   handleLoginButton = (event) => {
@@ -50,7 +53,25 @@ class App extends Component {
     event.preventDefault()
     this.setState({ shopButton: true })
   }
-  
+
+/* --------------------------------- FROM HERE ---------------------------------*/
+  handleEnemyButton = (event) => {
+    event.preventDefault ()
+    this.setState ({ enemyEncounter: true })
+  }
+
+  handleTrapButton = (event) => {
+    event.preventDefault ()
+    this.setState ({ trapEncounter: true })
+  }
+
+  handleRewardButton = (event) => {
+    event.preventDefault ()
+    this.setState ({ rewardEncounter: true })
+  }
+
+/* --------------------------------- TO HERE ---------------------------------*/
+
   handleLogIn = (event) => {
     event.preventDefault()
     this.setState({
