@@ -16,12 +16,16 @@ import info from "./BattleLogic/TestInfo.json";        //replace with axios
 class Battle extends React.Component {
 
   state = {
+    userBase: {
+      charDmg : 1,
+      charHp: 10,
+      charSpd: 1
+    },
     char: info.CharName,
     charDmg: info.CharDmg,
     charSpd: info.CharSpd,
     charHp: info.CharHp,
     charChp: 0,
-    charMods: info.CharMods,     //mods needed? //depends on where items come in
     mon: info.MonName,
     monDmg: info.MonDmg,
     monSpd: info.MonSpd,
@@ -36,19 +40,27 @@ class Battle extends React.Component {
     flee: false,
     initialized: false,          //may be outmodded
     escape: false,
-    escapefail: false
+    escapefail: false,
+    userInv: [],       //for inventory
+    userEquipped: {}       //for inventory
   }
   ///Initializing and Mechanics///
   getMon() { }    //db get mon stats
   getChar() { }   //db get player stats
 
   componentDidMount() {  //initialization {set Chp, dmg modded by equip, etc.}
-    //getChar & getMon
-    console.log('mounted')
-    this.setState({
-      charChp: this.state.charHp,
-      monChp: this.state.monHp,
-      initialize: true
+
+    //for inventory
+    axios.get("/api/users/" + sessionStorage.getItem("token")).then(user => {
+      this.setState({
+          userInv: user.inventory,
+          userEquipped: user.equipped,
+          charDmg: user.userStats.attack,
+          charHp: user.userStats.maxHp,
+          charChp: user.userStats.currentHp,
+          charSpd: user.userStats.speed,
+          monChp: this.state.monHp
+      });
     })
   }
 
@@ -167,6 +179,99 @@ class Battle extends React.Component {
       lose: true
     })
   }
+
+  //all things inventory//
+  
+  saveStatsToDB = () => {
+    axios.put("/api/users/" + sessionStorage.getItem("token"), {
+      stats: {
+        attack: this.state.charDmg,
+        maxHp: this.state.charHp,
+        currentHp: this.state.charChp,
+        speed: this.state.charSpd
+      }
+    });
+  }
+
+
+  obtainItem = (name, obtainItem, amount) => {
+    let copy = this.state.userInv.slice();
+    if (copy.findIndex(item => item.name === name) != -1) {
+        copy[copy.findIndex(item => item.name === name)].amount += amount;
+    } else if (copy.findIndex(item => item.name === name) = -1) {
+        copy.push({
+            itemName: name,
+            itemType: obtainItem.itemType,
+            itemProperties: obtainItem.itemProperties,
+            amount: amount
+        });
+    } else {
+        console.log("error, corrupted user inventory, please contact admin");
+    }
+
+    this.setState({
+        userInv: copy
+    })
+}
+
+removeItem = (name, amount) => {
+  let copy = this.state.userInv.slice();
+  if (copy.findIndex(item => item.name === name) != -1) {
+      copy[copy.findIndex(item => item.name === name)].amount -= amount;
+  } else {
+      console.log("error, corrupted user inventory, please contact admin");
+  }
+
+  if(copy[copy.findIndex(item => item.name === name)].amount <= 0) {
+      copy.splice(copy.findIndex(item => item.name === name),1);
+  }
+
+  this.saveInvToDB();
+}
+
+saveInvToDB = () => {
+  axios.put("/api/users/" + sessionStorage.getItem("token"), {
+      inventory: this.state.userInv,
+      equipped: this.state.userEquipped
+  });
+}
+
+usePotion = (name, item, amount) => {
+  let copy = this.state.userInv.slice();
+  if (copy.findIndex(item => item.name === name) != -1) {
+    this.setState({
+      charChp: charChp + item.itemProperties.effect
+    });
+  }
+
+  this.removeItem(name, amount);
+  this.saveInvToDB();
+  this.saveStatsToDB();
+}
+
+setStats = () => {
+  this.state.userEquipped.forEach(item => {
+      if (item.itemType === "Weapon") {
+          const newCharDmg = this.state.userBase.charDmg + item.itemProperties.effect;
+          this.setState({
+            charDmg: newCharDmg
+        });
+      } else if (item.itemType === "Armor") {
+          const newCharHp = this.state.userBase.charHp + item.itemProperties.effect;
+          this.setState({
+            charHp : newCharHp
+          })
+      } else if (item.itemType === "Trinket") {
+          const newCharSpd = this.state.userBase.charSpd + item.itemProperties.effect;
+          this.setState({
+            charSpd : newCharSpd
+          })
+      } else {
+          console.log("error, corrupted user inventory, please contact admin");
+      }
+  })
+}
+
 
   // onUnMount(){db.PushResults}
 

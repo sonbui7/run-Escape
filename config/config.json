@@ -1,8 +1,8 @@
 {
     "development": {
       "username": "root",
-      "password": "",
-      "database": "p2thesql_db",
+      "password": "199199",
+      "database": "gameTest",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
