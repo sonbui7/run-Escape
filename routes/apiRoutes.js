@@ -10,6 +10,14 @@ module.exports = function (app) {
         });
     });
 
+    app.post("/api/createuser", function(req, res) {
+        db.Player.create(req.body).then(function(data){
+            res.json(data);
+        }).catch(function(err){
+            res.json(err);
+        });
+    });
+
     //login
     app.post("/api/users", function (req, res) {
         db.Player.findOne({
@@ -20,6 +28,18 @@ module.exports = function (app) {
         }).then(function (data) {
             res.json(data);
         }).catch(function (err) {
+            res.json(err);
+        });
+    });
+
+    app.get("/api/users/:id", function(req, res){
+        db.Player.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(user){
+            res.json(user);
+        }).catch(function(err){
             res.json(err);
         });
     });
