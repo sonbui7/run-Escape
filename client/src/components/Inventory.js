@@ -69,15 +69,15 @@ class Inventory extends React.Component {
         })
     }
 
-    obtainItem = (name, item, amount) => {
+    obtainItem = (name, obtainItem, amount) => {
         let copy = this.state.userInv.slice();
         if (copy.findIndex(item => item.name === name) != -1) {
             copy[copy.findIndex(item => item.name === name)].amount += amount;
         } else if (copy.findIndex(item => item.name === name) = -1) {
             copy.push({
                 itemName: name,
-                itemType: item.itemType,
-                itemProperties: item.itemProperties,
+                itemType: obtainItem.itemType,
+                itemProperties: obtainItem.itemProperties,
                 amount: amount
             });
         } else {
