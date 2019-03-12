@@ -2,34 +2,32 @@ import React from 'react';
 
 const Forest = (props) => (
     <div id="forest">
-        <h2 class="forestHeader">Forest</h2>
+        <img id="forestBackground" src="https://external-preview.redd.it/vlSGrKKWy5_cjFBXuK0VaV_n_VTLEFWBSTbIyWv-owY.png?auto=webp&s=36ccd9b41badca9d37ba6eff64099e5c656900c6" alt="forestBackground"/>
+        <h2 class="forestHeader"><i className="fas fa-tree"></i> Forest</h2>
         <button type="button" id="backButton" class="btn btn-dark" onClick={props.handleBackButton}>Back</button>
 
         <div>
-            <button type="button" class="btn btn-danger area1" onClick={props.handleEnemyButton}><i class="far fa-question-circle"></i> Area 1</button>
             <div class="card-body card areaOneInfo">
-                <h5 class="card-title">Area 1</h5>
-                <p class="card-text">Battle: 100% <br /> Monsters: Goblin Lvl 1 Wolf Lvl 2 <br /> Reward: 100%</p>
+            <button type="button" class="btn btn-danger area1" onClick={props.handleEnemyButton}><i class="far fa-question-circle"></i> Area 1</button>
+                <p class="card-text">Battle: 100%  <br /> Reward: 100%</p>
             </div>
         </div>
 
 
         <div>
-            <button type="button" class="btn btn-danger area2" onClick={props.handleTrapButton}><i class="far fa-question-circle"></i> Area 2</button>
             <div class="card-body card areaTwoInfo">
-                <h5 class="card-title">Area 2</h5>
+            <button type="button" class="btn btn-danger area2" onClick={props.handleTrapButton}><i class="far fa-question-circle"></i> Area 2</button>
                 <p class="card-text">Battle: 100% <br /> Reward: 100%</p>
             </div>
         </div>
 
         <div>
-            <button type="button" class="btn btn-danger area3" onClick={props.handleRewardButton}><i class="far fa-question-circle"></i> Area 3</button>
             <div class="card-body card areaThreeInfo">
-                <h5 class="card-title">Area 3</h5>
+            <button type="button" class="btn btn-danger area3" onClick={props.handleRewardButton}><i class="far fa-question-circle"></i> Area 3</button>
                 <p class="card-text">Battle: 100% <br /> Reward: 100%</p>
             </div>
         </div>
-        
+
         <div id="health">Health: </div>
 
         <div id="gameTextBox">

@@ -2,18 +2,20 @@ import React from 'react';
 import '../App.css'
 
 const Town = (props) => (
+    <div>
+        <img id="townBackground" src="https://i.redd.it/jasnbiyat3vy.png" alt="townBackground" />
     <div id="town">
         <h2 className="townHeader"><i className="fas fa-home"></i> Town</h2>
         <button type="button" id="townShopBtn" className="btn btn-warning" onClick={props.handleShopButton}><i className="fas fa-coins"></i> Shop</button>
-        <button type="button" id="townForestBtn" className="btn btn-success" onClick={props.handleForestButton}><i className="fas fa-tree"></i> Forest</button>
-        <button type="button" id="townMountainBtn" className="btn btn-secondary" onClick={props.handleMountainButton}><i className="fas fa-mountain"></i> Mountain</button>
 
         <div className="card-body card forestDifficulty">
-            <p className="card-text">Difficulty level: <i className="fas fa-skull" /></p>
+        <button type="button" id="townForestBtn" className="btn btn-success" onClick={props.handleForestButton}><i className="fas fa-tree"></i> Forest</button>
+            <p className="card-text">Difficulty level: <i className="fas fa-skull" /> <i className="fas fa-skull" /> <i className="fas fa-skull" /></p>
         </div>
 
         <div className="card-body card mountainDifficulty">
-            <p className="card-text">Difficulty level: <i className="fas fa-skull" /> <i className="fas fa-skull" /></p>
+        <button type="button" id="townMountainBtn" className="btn btn-secondary" onClick={props.handleMountainButton}><i className="fas fa-mountain"></i> Mountain</button>
+            <p className="card-text">Difficulty level: <br /><i className="fas fa-skull" /> <i className="fas fa-skull" /> <i className="fas fa-skull" /></p>
         </div>
 
 
@@ -23,7 +25,7 @@ const Town = (props) => (
             <br />
             <br />
             <br />
-            <p>Welcome to run-Escape! If you're new to the game, we recommend you starting out in the forest area</p>
+            <p>Welcome to run-Escape! Good luck getting through, its going to be a rough ride</p>
             <br />
             <br />
             <br />
@@ -56,6 +58,7 @@ const Town = (props) => (
         </div>
 
 
+    </div>
     </div>
 )
 
