@@ -152,7 +152,7 @@ class Inventory extends React.Component {
 
     equipItem = (itemToEquip) => {
         let copyEquip = Object.assign({}, this.state.userEquipped);
-        let unequippedItem;
+        let unequippedItem={};
 
         for (let item in copyEquip) {
             if (item.itemType === itemToEquip.itemType) {
@@ -207,7 +207,7 @@ class Inventory extends React.Component {
     //// usage handles
     handleWeapons = (e) => {
         e.preventDefault();
-        equipItem(e.target.dataset.val);
+        this.equipItem(JSON.parse(e.target.dataset.val));
         this.setState({
             currentPage: "Weapons"
         });
@@ -215,7 +215,7 @@ class Inventory extends React.Component {
 
     handleArmor = (e) => {
         e.preventDefault();
-        equipItem(e.target.dataset.val);
+        this.equipItem(JSON.parse(e.target.dataset.val));
         this.setState({
             currentPage: "Armor"
         });
@@ -223,7 +223,7 @@ class Inventory extends React.Component {
 
     handleTrinkets = (e) => {
         e.preventDefault();
-        equipItem(e.target.dataset.val);
+        this.equipItem(JSON.parse(e.target.dataset.val));
         this.setState({
             currentPage: "Trinkets"
         });
@@ -231,7 +231,7 @@ class Inventory extends React.Component {
 
     handlePotions = (e) => {
         e.preventDefault();
-        usePotion(e.target.dataset.val);
+        this.usePotion(JSON.parse(e.target.dataset.val));
         this.setState({
             currentPage: "Potions"
         });
