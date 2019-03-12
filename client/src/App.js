@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-import HomePage from "./components/Home"
-import Town from "./components/Town"
+import Explore from './components/Explore'
+import Battle from "./components/Battle"
+import Town from './components/Locations/Town'
+import HomePage from "./components/HomePage"
 import LogSuccess from "./components/LogSuccess"
-import Forest from "./components/Forest"
-import Mountain from "./components/Mountain"
-import Shop from "./components/Shop"
-import Enemy from "./components/Enemy"
-import Trap from "./components/Trap"
-import Reward from "./components/Reward"
+import Forest from "./components/Locations/Forest"
+import Mountain from "./components/Locations/Mountain"
+import Shop from "./components/TownLogic/Shop"
+import Trap from "./components/ExploreLogic/Trap"
+import Reward from "./components/ExploreLogic/Rewards"
+import Chest from "./components/ExploreLogic/Chest"
 
 
 
@@ -96,7 +98,11 @@ class App extends Component {
             handleStartGameButton={this.handleStartGameButton} />
         </div>
       )
-    } else if (this.state.isLogIn === true && this.state.startGame === true && this.state.forestButton === false && this.state.mountainButton === false && this.state.shopButton === false) {
+    } else if (this.state.isLogIn === true &&
+       this.state.startGame === true &&
+        this.state.forestButton === false &&
+         this.state.mountainButton === false &&
+          this.state.shopButton === false) {
       return (
         <div>
           <Town
@@ -110,7 +116,10 @@ class App extends Component {
         <div><Shop
           handleBackButton={this.handleBackButton} /></div>
       )
-    } else if (this.state.forestButton === true && this.state.enemyEncounter === false && this.state.trapEncounter === false && this.state.rewardEncounter === false) {
+    } else if (this.state.forestButton === true &&
+       this.state.enemyEncounter === false &&
+        this.state.trapEncounter === false &&
+         this.state.rewardEncounter === false) {
       return (
         <div>
           <Forest
@@ -156,40 +165,6 @@ class App extends Component {
 
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //       <div className="App">
-  //  {/* {this.state.isLogIn ? (
-  //           <div>
-  //           <LogSuccess 
-  //             handleStartGameButton ={this.handleStartGameButton} />
-  //           {this.state.startGame ? (
-  //             <Town />
-  //           ) : (
-  //             <Town />
-  //           )}
-  //           </div>
-  //         ) : (
-  //             <HomePage
-  //               handleLoginButton={this.handleLoginButton} />
-  //           )} */}
-
-  //       </div>
 }
 
 export default App;

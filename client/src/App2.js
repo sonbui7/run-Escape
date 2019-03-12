@@ -103,24 +103,10 @@ class App extends React.Component {
 ///hnadle buttons
   render() {  //Nav is for diagnostics, remove when done
     return (
-      <BrowserRouter>
         <div>
           <header className="MainHeader">
             runEscape
           </header>
-              {/* <nav>
-                <Link to={'/'}> HomePage </Link> |
-                <Link to={'/login'}> LogSuccess </Link> |
-                <Link to={'/town'}> Town </Link> |
-                <Link to={'/battle'}> Battle </Link> |
-                <Link to={'/explore'}> Explore </Link> |
-                <Link to={'/forest'}> Forest </Link> |
-                <Link to={'/shop'}> Shop </Link> |
-                <Link to={'/mountain'}> Mountain </Link> |
-                <Link to={'/trap'}> Trap </Link> |
-                <Link to={'/reward'}> Reward </Link> |
-                <Link to={'/chest'}> Chest </Link> |
-              </nav> */}
           <div className="displayLogic">
             {this.state.isLogIn === false ?
               <HomePage
@@ -156,31 +142,7 @@ class App extends React.Component {
               <></>
             }
           </div>
-          <div className="Routes">
-          {/* <Switch>
-            <Route path={'/'} component={HomePage} />
-            <Route path={'/login'} component={LogSuccess} />
-            <Route
-             path={'/town'}
-             render={
-               props =>
-                <Town {...props}
-                handleForestButton={this.handleForestButton}
-                handleMountainButton={this.handleMountainButton}
-                handleShopButton={this.handleShopButton}
-            />} />
-            <Route path={'/battle'} component={Battle} />
-            <Route path={'/explore'} component={Explore} />
-            <Route path={'/forest'} component={Forest} />
-            <Route path={'/shop'} component={Shop} />
-            <Route path={'/mountain'} component={Mountain} />
-            <Route path={'/trap'} component={Trap} />
-            <Route path={'/reward'} component={Reward} />
-            <Route path={'/chest'} component={Chest} />
-          </Switch> */}
-          </div>
         </div>
-      </BrowserRouter>
 ) } }
 
   export default App;

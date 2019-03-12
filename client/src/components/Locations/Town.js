@@ -1,41 +1,61 @@
-// import React from 'react';
-
-// //C&P placeholder
-
-// const Town = props => (
-//   <div className="Town">
-//   <p>Welcome to town, {props.name}</p>
-//   <p>What will you do?</p>
-// <button className="explore" onClick={props.explore} value="explore">explore</button>
-// <button className="shop" onClick={props.shop} value="shop">shop</button>
-// </div>
-// )
-
-// export default Town;
-
 import React from 'react';
 import '../../App.css'
 
- const Town = (props) => (
-    <div className="container">
-        <h2>Town</h2>
-        <button type="button" id="townShopBtn" className="btn btn-primary" onClick={props.handleShopButton}>Shop</button>
-        <button type="button" id="townForestBtn" className="btn btn-primary" onClick={props.handleForestButton}>Forest</button>
-        <button type="button" id="townMountainBtn" className="btn btn-primary" onClick={props.handleMountainButton}>Mountain</button>
-        <div id="inventory">
-            <h2>Inventory</h2>
+const Town = (props) => (
+    <div>
+        <img id="townBackground" src="https://i.redd.it/jasnbiyat3vy.png" alt="townBackground" />
+    <div id="town">
+        <h2 className="townHeader"><i className="fas fa-home"></i> Town</h2>
+        <button type="button" id="townShopBtn" className="btn btn-warning" onClick={props.handleShopButton}><i className="fas fa-coins"></i> Shop</button>
+
+        <div className="card-body card forestDifficulty">
+        <button type="button" id="townForestBtn" className="btn btn-success" onClick={props.handleForestButton}><i className="fas fa-tree"></i> Forest</button>
+            <p className="card-text">Difficulty level: <i className="fas fa-skull" /> <i className="fas fa-skull" /> <i className="fas fa-skull" /></p>
         </div>
 
-         <div id="gameTextBox">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+        <div className="card-body card mountainDifficulty">
+        <button type="button" id="townMountainBtn" className="btn btn-secondary" onClick={props.handleMountainButton}><i className="fas fa-mountain"></i> Mountain</button>
+            <p className="card-text">Difficulty level: <br /><i className="fas fa-skull" /> <i className="fas fa-skull" /> <i className="fas fa-skull" /></p>
         </div>
+
+
+        <div id="health">Health: </div>
+
+        <div id="gameTextBox">
+
+            <p>Welcome to run-Escape! Good luck getting through, its going to be a rough ride</p>
+            
+        </div>
+
+        <div id="inventory" >
+
+            <button type="button" className="btn btn-primary" id="toggleInventory" data-toggle="modal" data-target="#bd-example-modal-lg"><i className="fas fa-briefcase"></i> Inventory</button>
+
+
+            <div className="modal fade" id="bd-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Inventory</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <p>Insert items here</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
     </div>
 )
 
- export default Town 
+export default Town

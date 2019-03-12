@@ -1,16 +1,21 @@
 import React from "react"
 
-const Trap = (props) => (
-    <div id="trapPage">
+const Enemy = (props) => (
+    <div id="enemyPage">
         <img id="forestBackground" src="https://external-preview.redd.it/vlSGrKKWy5_cjFBXuK0VaV_n_VTLEFWBSTbIyWv-owY.png?auto=webp&s=36ccd9b41badca9d37ba6eff64099e5c656900c6" alt="forestBackground" />
-        <h2 className="trapHeader"><i class="fab fa-mailchimp"></i> You fell into a trap!</h2>
+        <h2 className="enemyHeader"><i className="far fa-angry"></i> Enemy encountered!</h2>
         <div id="health">Health: </div>
 
         <div id="gameTextBox">
 
-            <p>I activate my trap card!</p>
+            <p>Enemy encountered! Choose an action to defeat the enemy!</p>
             <button type="button" className="btn btn-primary actionNext">Next</button>
 
+        </div>
+
+        <div id="enemyInfo">
+            <p>Goblin</p>
+            <p>HP: 5 DMG: 2 </p>
         </div>
 
         <div className="actionButtonContainer">
@@ -28,4 +33,4 @@ const Trap = (props) => (
     </div>
 )
 
-export default Trap
+export default Enemy

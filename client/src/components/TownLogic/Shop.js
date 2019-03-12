@@ -1,25 +1,11 @@
-// import React from 'react';
-
-// //C&P placeholder
-
-// const Shop = props => (
-//   <div className="Shop">
-//   <p>You found the mall</p>
-//   <p>What will you do?</p>
-// <button className="buy" onClick={props.buy} value="buy">buy</button>
-// <button className="sell" onClick={props.sell} value="sell">sell</button>
-// <button className="leave" onClick={props.leave} value="leave">leave</button>
-// </div>
-// )
-
-// export default Shop;
-
 import React from 'react';
 
- const Shop = (props) => (
-    <div className="container">
-    <h2>Shop</h2>
-        <button type="button" className="btn btn-primary" onClick={props.handleBackButton}>Back</button>
+const Shop = (props) => (
+    <div>
+    <h2 className="shopHeader">Shop</h2>
+
+        <button type="button" className="btn btn-dark" onClick={props.handleBackButton}>Back</button>
+
         <div className="row">
             <li className="list-group-item">Item 1</li>
             <li className="list-group-item">Gold</li>
@@ -46,7 +32,7 @@ import React from 'react';
             <li className="list-group-item"><button type="button" className="btn btn-primary">Buy</button></li>
         </div>
 
-         <div id="gameTextBox">
+        <div id="gameTextBox">
         <br />
         <br />
         <br />
@@ -58,4 +44,4 @@ import React from 'react';
     </div>
 )
 
- export default Shop 
+export default Shop
