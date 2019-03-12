@@ -68,11 +68,14 @@ class Inventory extends React.Component {
 
     // grabbing user info and recalculating stats
     componentDidMount = () => {
-        axios.get("/api/users/" + sessionStorage.getItem("token")).then(user => {
+        axios.get("/api/users/1" /*+ sessionStorage.getItem("token")*/)
+    .then(user => {
+        console.log(user);
+            // axios.get(`api/Player/`)
             this.setState({
-                userInv: user.inventory,
-                userStats: user.stats,
-                userEquipped: user.equipped
+                userInv: user.data.inventory,
+                userStats: user.data.stats,
+                userEquipped: user.data.equipped
             });
         }).then(() => {
             this.setStats();
@@ -80,7 +83,7 @@ class Inventory extends React.Component {
     }
 
     setStats = () => {
-        this.userEquipped.forEach(item => {
+        for(let item in this.state.userEquipped) {
             let copy = Object.assign({}, this.state.userStats);
             if (item.itemType === "Weapon") {
                 copy.attack = this.state.userBase.attack + item.itemProperties.effect;
@@ -94,7 +97,7 @@ class Inventory extends React.Component {
             this.setState({
                 userStats: copy
             });
-        })
+        }
     }
 
 
