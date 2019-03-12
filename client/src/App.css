@@ -10,6 +10,8 @@
   background:rgba(255,255,255,0.9);
   color: black;
   text-align: center;
+  padding: 30px;
+  padding-top: 50px;
 }
 
 #health {
@@ -68,7 +70,7 @@
 #homePageStyle {
   border-style: solid;
   border-color: lightslategrey;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -152,7 +154,7 @@
 }
 
 #toggleInventory {
-  position: absolute;
+  position: fixed;
   left: 80%;
   top: 75%;
 }
@@ -286,4 +288,8 @@
   border-color: lightgray;
   background:rgba(255,255,255,0.8);
   border-radius: 10px;
+}
+
+.actionNext {
+  float: right;
 }
