@@ -1,44 +1,41 @@
-// import React from 'react';
-
-// //C&P placeholder
-
-// const Mountain = props => (
-//   <div className="Mountain">
-//     Mountain</div>
-// )
-
-// export default Mountain;
-
 import React from 'react';
+import Explore from "../Explore"
 
  const Mountain = (props) => (
-    <div className="container">
-    <h2>Mountain</h2>
-        <button type="button" className="btn btn-primary" onClick={props.handleBackButton}>Back</button>
-        <button type="button" className="btn btn-primary">Area 4</button>
-        <div className="card-body card">
-            <h5 className="card-title">Area 4</h5>
-            <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
-        </div>
-        <button type="button" className="btn btn-primary">Area 5</button>
-        <div className="card-body card">
-            <h5 className="card-title">Area 5</h5>
-            <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
-        </div>
-        <button type="button" className="btn btn-primary">Area 6</button>
-        <div className="card-body card">
-            <h5 className="card-title">Area 6</h5>
-            <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
+    <div id="mountain">
+    <img id="mountainBackground" src="http://s1.1zoom.net/big0/457/360461-admin.jpg" alt="mountainBackground" />
+        <h2 className="mountainHeader"><i className="fas fa-mountain"></i> Mountains</h2>
+        <button type="button" id="backButton" className="btn btn-dark" onClick={props.handleBackButton}>Back</button>
+
+        <div>
+            <div className="card-body card areaFourInfo">
+            <button type="button" className="btn btn-danger area4"><i className="far fa-question-circle"></i> Area 4</button>
+                <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
+            </div>
         </div>
 
-         <div id="gameTextBox">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+
+        <div>
+            <div className="card-body card areaFiveInfo">
+            <button type="button" className="btn btn-danger area5"><i className="far fa-question-circle"></i> Area 5</button>
+                <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
+            </div>
+        </div>
+
+
+        <div>
+            <div className="card-body card areaSixInfo">
+            <button type="button" className="btn btn-danger area6"><i className="far fa-question-circle"></i> Area 6</button>
+                <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
+            </div>
+        </div>
+
+        <div id="health">Health: </div>
+
+        <div id="gameTextBox">
+
+            <Explore />
+            
         </div>
     </div>
 
