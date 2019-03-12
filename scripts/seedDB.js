@@ -45,6 +45,7 @@ const seedChar = [
         },
         inventory: [
             {
+                amount: 1,
                 itemName: "Lucky Underwear",
                 itemType: "Trinket",
                 itemProperties: {
@@ -55,6 +56,7 @@ const seedChar = [
         ],
         equipped: {
             Weapon: {
+                "amount" : 1,
                 "itemName": "Stick",
                 "itemType": "Weapon",
                 "itemProperties": {
@@ -64,6 +66,7 @@ const seedChar = [
 
             },
             Armor: {
+                "amount" : 1,
                 "itemName": "Coat",
                 "itemType": "Armor",
                 "itemProperties": {
@@ -72,6 +75,7 @@ const seedChar = [
                 }
             },
             Trinket: {
+                "amount" : 1,
                 "itemName": "Roller Skates",
                 "itemType": "Trinket",
                 "itemProperties": {

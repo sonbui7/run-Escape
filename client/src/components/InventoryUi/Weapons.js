@@ -1,7 +1,6 @@
 import React from "react";
 
 const Weapons = (props) => {
-    console.log(props);
     const weapons = props.userInv.filter(item => item.itemType === "Weapon").slice();
 
     return <div className="container">
