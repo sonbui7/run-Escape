@@ -187,6 +187,46 @@ const items = [
         effect: 60
     }
 },
+{
+    itemName: "Goblin Underwear",
+    itemType: "Misc",
+    itemProperties: {
+        description: "Why are you collecting these?",
+        effect: 0
+    }
+},
+{
+    itemName: "Treasure Chest",
+    itemType: "Misc",
+    itemProperties: {
+        description: "Empty inside, just like you.",
+        effect: 0
+    }
+},
+{
+    itemName: "A Penny",
+    itemType: "Misc",
+    itemProperties: {
+        description: "The only purpose these serve is taking up space.",
+        effect: 0
+    }
+},
+{
+    itemName: "Bottle Cap",
+    itemType: "Misc",
+    itemProperties: {
+        description: "Part of your doomsday prep kit.",
+        effect: 0
+    }
+},
+{
+    itemName: "Pet Rock",
+    itemType: "Misc",
+    itemProperties: {
+        description: "Your best friend in this dangerous world. You named it Frank.",
+        effect: 0
+    }
+},
 //new iteam
 
 
