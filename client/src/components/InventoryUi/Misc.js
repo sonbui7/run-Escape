@@ -11,7 +11,9 @@ const Misc = (props) => {
                     <div className="col col-3 itemName">{misc.itemName}</div>
                     <div className="col col-2 itemAmount">X {misc.amount}</div>
                     <div className="col col-7 itemDescription"><p>{misc.description}</p></div>
+                    <hr></hr>
                 </div>
+                
             ))
         }
     </div>

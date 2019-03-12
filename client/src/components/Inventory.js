@@ -256,6 +256,7 @@ class Inventory extends React.Component {
                     <button onClick={this.miscPage}>Misc Items</button>
                     </div>
                 </div>
+                <hr></hr>
                 <div>
                     {this.state.currentPage === "Weapons" ? <Weapons userInv={this.state.userInv} handleWeapons={this.handleWeapons} />
                         : this.state.currentPage === "Armor" ? <Armor userInv={this.state.userInv} handleWeapons={this.handleArmor} />

@@ -12,6 +12,7 @@ const Weapons = (props) => {
                     <div className="col col-2 itemAmount">X {weapon.amount}</div>
                     <div className="col col-6 itemDescription"><p>{weapon.description}</p></div>
                     <button val={JSON.stringify(weapon)} onClick={props.handleWeapons}>Equip</button>
+                    <hr></hr>
                 </div>
             ))
         }
