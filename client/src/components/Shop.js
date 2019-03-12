@@ -4,7 +4,7 @@ const Shop = (props) => (
     <div>
     <h2 class="shopHeader">Shop</h2>
 
-        <button type="button" class="btn btn-primary" onClick={props.handleBackButton}>Back</button>
+        <button type="button" class="btn btn-dark" onClick={props.handleBackButton}>Back</button>
 
         <div class="row">
             <li class="list-group-item">Item 1</li>

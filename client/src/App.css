@@ -1,7 +1,7 @@
 /* ---------------- Universal styling ---------------- */
  #gameTextBox {
   border-style: solid;
-  color: lightgray;
+  border-color: lightgray;
   width: 60%;
   position: fixed;
   top: 72%;
@@ -9,10 +9,24 @@
   border-radius: 10px;
 }
 
+#health {
+  border-style: solid;
+  border-color: lightgray;
+  position: fixed;
+  top: 66%;
+  left: 100px;
+  width: 8%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
 .townHeader,
 .forestHeader,
 .mountainHeader,
-.shopHeader {
+.shopHeader,
+.enemyHeader,
+.trapHeader,
+.rewardHeader {
   text-align: center;
   padding: 20px;
 }
@@ -27,6 +41,39 @@
   left: 5%;
 }
 
+.action1 {
+  position: fixed;
+  top: 75%;
+  left: 70%;
+}
+
+.action2 {
+  position: fixed;
+  top: 75%;
+  left: 80%;
+}
+
+.action3 {
+  position: fixed;
+  top: 85%;
+  left: 70%;
+}
+
+.actionEscape {
+  position: fixed;
+  top: 85%;
+  left: 80%
+}
+
+#playerLootBox {
+  border-style: solid;
+  border-color: lightgray;
+  width: 15%;
+  position: fixed;
+  top: 30%;
+  left: 80%;
+  border-radius: 10px;
+}
 /* ---------------- Log-In page styling ---------------- */
 #homePageStyle {
   border-style: solid;
@@ -100,6 +147,18 @@
   position: absolute;
   left: 90%;
   top: 5%;
+}
+
+.forestDifficulty {
+  position: fixed;
+  top: 55%;
+  left: 35%;
+}
+
+.mountainDifficulty {
+  position: fixed;
+  left: 60%;
+  top: 25%;
 }
 
 /* ---------------- Forest page styling ---------------- */
