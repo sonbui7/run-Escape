@@ -69,6 +69,27 @@ class Inventory extends React.Component {
         })
     }
 
+<<<<<<< HEAD
+    // obtainItem = (name, item, amount) => {
+    //     let copy = this.state.userInv.slice();
+    //     if (copy.findIndex(item => item.name === name) != -1) {
+    //         copy[copy.findIndex(item => item.name === name)].amount += amount;
+    //     } else if (copy.findIndex(item => item.name === name) = -1) {
+    //         copy.push({
+    //             itemName: name,
+    //             itemType: item.itemType,
+    //             itemProperties: item.itemProperties,
+    //             amount: amount
+    //         });
+    //     } else {
+    //         console.log("error, corrupted user inventory, please contact admin");
+    //     }
+
+    //     this.setState({
+    //         userInv: copy
+    //     })
+    // }
+=======
     obtainItem = (name, obtainItem, amount) => {
         let copy = this.state.userInv.slice();
         if (copy.findIndex(item => item.name === name) != -1) {
@@ -88,10 +109,11 @@ class Inventory extends React.Component {
             userInv: copy
         })
     }
+>>>>>>> db14817e7a8c6ec62d4c2fba613b24a9861281fe
 
     removeItem = (name, amount) => {
         let copy = this.state.userInv.slice();
-        if (copy.findIndex(item => item.name === name) != -1) {
+        if (copy.findIndex(item => item.name === name) !== -1) {
             copy[copy.findIndex(item => item.name === name)].amount -= amount;
         } else {
             console.log("error, corrupted user inventory, please contact admin");
@@ -104,7 +126,7 @@ class Inventory extends React.Component {
     }
 
     equipItem = (type, itemToEquip) => {
-        let copy = this.state.userInv.slice();
+        // let copy = this.state.userInv.slice();
         let copyEquip = Object.assign({}, this.state.userEquipped);
         let unequippedItem;
 
@@ -121,7 +143,14 @@ class Inventory extends React.Component {
         });
     }
 
+//Render??
+render() {
+    return (
+        <div className="Inventory">
 
+        </div>
+    )
+}
 
 
 

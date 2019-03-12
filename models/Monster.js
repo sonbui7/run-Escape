@@ -21,7 +21,7 @@ module.exports = function (connection, Sequelize) {
         gold: {
             type: Sequelize.INTEGER,
             allowNull: true,
-        }
+        },
     });
 
     Monster.associate = function(models) {

@@ -5,6 +5,7 @@ import React from 'react';
 const Escape = props => (
   <div className="Escape">
     YOU GET AWAY!
+    <button onClick={props.close}>Close</button>
     </div>
 )
 
