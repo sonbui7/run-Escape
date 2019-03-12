@@ -5,7 +5,7 @@
   width: 60%;
   position: fixed;
   top: 72%;
-  left: 100px;
+  left: 80px;
   border-radius: 10px;
   background:rgba(255,255,255,0.9);
   color: black;
@@ -17,7 +17,7 @@
   border-color: lightgray;
   position: fixed;
   top: 66%;
-  left: 100px;
+  left: 80px;
   width: 8%;
   border-radius: 10px;
   padding: 10px;
@@ -38,6 +38,8 @@
   left: 50%;
   padding: 20px;
   font-size: 64px;
+  width: 70%;
+  text-align: center;
 }
 
 .card-body {
@@ -50,38 +52,17 @@
   left: 5%;
 }
 
-.action1 {
-  position: fixed;
-  top: 75%;
-  left: 70%;
-}
-
-.action2 {
-  position: fixed;
-  top: 75%;
-  left: 80%;
-}
-
-.action3 {
-  position: fixed;
-  top: 85%;
-  left: 70%;
-}
-
-.actionEscape {
-  position: fixed;
-  top: 85%;
-  left: 80%
-}
-
 #playerLootBox {
   border-style: solid;
   border-color: lightgray;
   width: 15%;
   position: fixed;
-  top: 30%;
-  left: 80%;
+  top: 40%;
+  left: 76.5%;
   border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  background:rgba(255,255,255,0.8);
 }
 /* ---------------- Home page styling ---------------- */
 #homePageStyle {
@@ -115,6 +96,21 @@
   width: 100%;
   text-align: center;
   margin-bottom: 5px;
+}
+
+.gameTitle {
+  position: fixed;
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.homeHeader {
+  font-family: 'Allerta Stencil', sans-serif;
+  font-size: 36px;
 }
 
 
@@ -244,4 +240,50 @@
 .areaSixInfo {
   top: 25%;
   left: 70%;
+}
+
+/* ------------- Enemy, Trap, Reward page styling ------------- */
+
+.enemyHeader {
+  color: white;
+}
+
+.actionButtonContainer {
+  border-style: solid;
+  border-color: lightgray;
+  background:rgba(255,255,255,0.8);
+  position: fixed;
+  top: 72%;
+  left: 72%;
+  border-radius: 10px;
+}
+
+
+.actionEscape {
+  width: 47.8%;
+}
+
+.action1,
+.action2,
+.action3,
+.actionEscape {
+  padding: 15px 40px;
+  margin: 3px 3px;
+}
+
+.trapHeader,
+.enemyHeader,
+.rewardHeader {
+  color: white;
+}
+
+#enemyInfo {
+  position: fixed;
+  top: 25%;
+  left: 80px;
+  width: 10%;
+  border-style: solid;
+  border-color: lightgray;
+  background:rgba(255,255,255,0.8);
+  border-radius: 10px;
 }

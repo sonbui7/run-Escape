@@ -4,6 +4,8 @@ const HomePage = (props) => (
     <div id="homeBackground">
         <img id="backImg"src="https://img2.akspic.com/image/15524-atmosphere-terrain-digital_art-earth-landscape-1920x1080.jpg" alt="backImg"/>
 
+    <h1 class="gameTitle">Run-Escape</h1>
+
     <div id="homePageStyle">
 
         <div id="signIn">
