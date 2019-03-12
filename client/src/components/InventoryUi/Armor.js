@@ -11,7 +11,7 @@ const Armor = (props) => {
                     <div className="col col-3 itemName">{armor.itemName}</div>
                     <div className="col col-2 itemAmount">X {armor.amount}</div>
                     <div className="col col-6 itemDescription"><p>{armor.description}</p></div>
-                    <button val={JSON.stringify(armor)} onClick={props.handleWeapons}>Equip</button>
+                    <button val={JSON.stringify(armor)} onClick={props.handleArmor}>Equip</button>
                     <hr></hr>
                 </div>
                 

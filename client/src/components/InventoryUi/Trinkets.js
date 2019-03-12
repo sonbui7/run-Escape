@@ -11,7 +11,7 @@ const Trinkets = (props) => {
                     <div className="col col-3 itemName">{trinket.itemName}</div>
                     <div className="col col-2 itemAmount">X {trinket.amount}</div>
                     <div className="col col-6 itemDescription"><p>{trinket.description}</p></div>
-                    <button val={JSON.stringify(trinket)} onClick={props.handleTrinket}>Equip</button>
+                    <button val={JSON.stringify(trinket)} onClick={props.handleTrinkets}>Equip</button>
                     <hr></hr>
                 </div>
                 

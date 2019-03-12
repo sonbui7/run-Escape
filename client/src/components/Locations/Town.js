@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../App.css'
+import Inventory from "../Inventory"
 
 const Town = (props) => (
     <div>
@@ -42,7 +43,7 @@ const Town = (props) => (
                             </button>
                         </div>
                         <div className="modal-body">
-                            <p>Insert items here</p>
+                            <Inventory />
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

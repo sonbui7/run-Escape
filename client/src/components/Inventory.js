@@ -59,7 +59,7 @@ class Inventory extends React.Component {
     }
 
     saveUserToDB = () => {
-        axios.put("/api/users/" + sessionStorage.getItem("token"), {
+        axios.put("/api/users/1", {
             stats: this.state.userStats,
             inventory: this.state.userInv,
             equipped: this.state.userEquipped
@@ -68,27 +68,37 @@ class Inventory extends React.Component {
 
     // grabbing user info and recalculating stats
     componentDidMount = () => {
-        this.setstats();
-        // axios.get("/api/users/" + sessionStorage.getItem("token")).then(user => {
-        //     this.setState({
-        //         userInv: user.inventory,
-        //         userStats: user.stats,
-        //         userEquipped: user.equipped
-        //     });
-        // }).then(() => {
-        //     this.setStats();
-        // });
+        axios.get("/api/users/1" /*+ sessionStorage.getItem("token")*/)
+            .then(user => {
+                console.log(user);
+                // axios.get(`api/Player/`)
+                this.setState({
+                    userInv: user.data.inventory,
+                    userStats: {
+                        attack: user.data.stats.attack,
+                        speed: user.data.stats.speed,
+                        maxHp: user.data.stats.hp,
+                        currentHp: user.data.stats.chp
+                    },
+                    userEquipped: user.data.equipped
+                });
+            }).then(() => {
+                this.setStats();
+            });
+        this.setStats();
     }
 
     setStats = () => {
+        // console.log(this.state.userEquipped);
         for (let item in this.state.userEquipped) {
+            console.log(this.state.userEquipped[item]);
             let copy = Object.assign({}, this.state.userStats);
-            if (item.itemType === "Weapon") {
-                copy.attack = this.state.userBase.attack + item.itemProperties.effect;
-            } else if (item.itemType === "Armor") {
-                copy.maxHp = this.state.userBase.maxHp + item.itemProperties.effect;
-            } else if (item.itemType === "Trinket") {
-                copy.speed = this.state.userBase.speed + item.itemProperties.effect;
+            if (this.state.userEquipped[item].itemType === "Weapon") {
+                copy.attack = this.state.userBase.attack + this.state.userEquipped[item].itemProperties.effect;
+            } else if (this.state.userEquipped[item].itemType === "Armor") {
+                copy.maxHp = this.state.userBase.maxHp + this.state.userEquipped[item].itemProperties.effect;
+            } else if (this.state.userEquipped[item].itemType === "Trinket") {
+                copy.speed = this.state.userBase.speed + this.state.userEquipped[item].itemProperties.effect;
             } else {
                 console.log("error, corrupted user inventory, please contact admin");
             }
@@ -96,25 +106,29 @@ class Inventory extends React.Component {
                 userStats: copy
             });
         }
+        this.saveUserToDB();
     }
-}
 
 
-obtainItem = (name, obtainItem, amount) => {
+
+obtainItem = (obtainItem, amount) => {
     let copy = this.state.userInv.slice();
-    if (copy.findIndex(item => item.name === name) !== -1) {
-        copy[copy.findIndex(item => item.name === name)].amount += amount;
-    } else if (copy.findIndex(item => item.name === name) === -1) {
+    if (copy.findIndex(item => item.name === obtainItem.itemName) !== -1) {
+        copy[copy.findIndex(item => item.name === obtainItem.itemName)].amount += amount;
+    } else if (copy.findIndex(item => item.name === obtainItem.itemName) === -1) {
+        console.log(copy);
+        console.log(obtainItem);
         copy.push({
-            itemName: name,
+            itemName: obtainItem.itemName,
             itemType: obtainItem.itemType,
             itemProperties: obtainItem.itemProperties,
-            amount: amount
+            amount: obtainItem.amount
         });
     } else {
         console.log("error, corrupted user inventory, please contact admin");
     }
 
+    console.log(copy);
     this.setState({
         userInv: copy
     })
@@ -123,16 +137,16 @@ obtainItem = (name, obtainItem, amount) => {
 
 removeItem = (name, amount) => {
     let copy = this.state.userInv.slice();
-    if (copy.findIndex(item => item.name === name) !== -1) {
-        copy[copy.findIndex(item => item.name === name)].amount -= amount;
+    let index = copy.findIndex(item => item.itemName === name);
+    if (index !== -1) {
+        copy[index].amount -= amount;
+        if(copy[index].amount <= 0) {
+            copy.splice(index, 1);
+        }
     } else {
         console.log("error, corrupted user inventory, please contact admin");
     }
 
-
-    if (copy[copy.findIndex(item => item.name === name)].amount <= 0) {
-        copy.splice(copy.findIndex(item => item.name === name), 1);
-    }
     this.setState({
         userInv: copy
     })
@@ -155,19 +169,20 @@ usePotion = (potion) => {
 equipItem = (itemToEquip) => {
     let copyEquip = Object.assign({}, this.state.userEquipped);
     let unequippedItem = {};
-
+    
     for (let item in copyEquip) {
-        if (item.itemType === itemToEquip.itemType) {
-            unequippedItem = item;
-            this.obtainItem(unequippedItem.itemName, 1);
-            item = itemToEquip;
-            this.removeItem(itemToEquip.name, 1);
+        if (copyEquip[item].itemType === itemToEquip.itemType) {
+            unequippedItem = copyEquip[item];
+            console.log(unequippedItem);
+            this.obtainItem(unequippedItem, 1);
+            copyEquip[item] = itemToEquip;
+            this.removeItem(itemToEquip.itemName, 1);
         }
     }
     this.setState({
         userEquipped: copyEquip
     });
-    this.setstats();
+    this.setStats();
 }
 
 ////page handles
@@ -226,7 +241,9 @@ handleArmor = (e) => {
 
 handleTrinkets = (e) => {
     e.preventDefault();
-    this.equipItem(JSON.parse(e.target.dataset.val));
+    console.log(e.target.getAttribute('val'));
+    console.log(e.target);
+    this.equipItem(JSON.parse(e.target.getAttribute('val')));
     this.setState({
         currentPage: "Trinkets"
     });
@@ -234,7 +251,7 @@ handleTrinkets = (e) => {
 
 handlePotions = (e) => {
     e.preventDefault();
-    this.usePotion(JSON.parse(e.target.dataset.val));
+    this.usePotion(JSON.parse(e.target.getAttribute('val')));
     this.setState({
         currentPage: "Potions"
     });
@@ -262,9 +279,9 @@ render() {
             <hr></hr>
             <div>
                 {this.state.currentPage === "Weapons" ? <Weapons userInv={this.state.userInv} handleWeapons={this.handleWeapons} />
-                    : this.state.currentPage === "Armor" ? <Armor userInv={this.state.userInv} handleWeapons={this.handleArmor} />
-                        : this.state.currentPage === "Trinkets" ? <Trinkets userInv={this.state.userInv} handleWeapons={this.handleTrinkets} />
-                            : this.state.currentPage === "Potions" ? <Potions userInv={this.state.userInv} handleWeapons={this.handlePotions} />
+                    : this.state.currentPage === "Armor" ? <Armor userInv={this.state.userInv} handleArmor={this.handleArmor} />
+                        : this.state.currentPage === "Trinkets" ? <Trinkets userInv={this.state.userInv} handleTrinkets={this.handleTrinkets} />
+                            : this.state.currentPage === "Potions" ? <Potions userInv={this.state.userInv} handlePotions={this.handlePotions} />
                                 : <Misc userInv={this.state.userInv} />}
             </div>
         </div>
@@ -272,6 +289,8 @@ render() {
 
     )
 }
+
 }
+
 
 export default Inventory;

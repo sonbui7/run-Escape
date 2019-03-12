@@ -3,7 +3,7 @@
   border-style: solid;
   border-color: lightgray;
   width: 60%;
-  position: fixed;
+  position: absolute;
   top: 72%;
   left: 80px;
   border-radius: 10px;
@@ -180,7 +180,7 @@
 /* ---------------- Forest page styling ---------------- */
 
 #forest {
-  color: white;
+  color: black;
 }
 
 #forestBackground {
