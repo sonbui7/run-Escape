@@ -16,6 +16,14 @@ module.exports = function (app) {
             res.json(data);
         }).catch(function (error) {
             res.json({ error: error });
+        })
+    })
+
+    app.post("/api/createuser", function(req, res) {
+        db.Player.create(req.body).then(function(data){
+            res.json(data);
+        }).catch(function(err){
+            res.json(err);
         });
     });
 
@@ -29,6 +37,18 @@ module.exports = function (app) {
         }).then(function (data) {
             res.json(data);
         }).catch(function (err) {
+            res.json(err);
+        });
+    });
+
+    app.get("/api/users/:id", function(req, res){
+        db.Player.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(user){
+            res.json(user);
+        }).catch(function(err){
             res.json(err);
         });
     });

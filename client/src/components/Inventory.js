@@ -69,6 +69,7 @@ class Inventory extends React.Component {
         })
     }
 
+<<<<<<< HEAD
     // obtainItem = (name, item, amount) => {
     //     let copy = this.state.userInv.slice();
     //     if (copy.findIndex(item => item.name === name) != -1) {
@@ -88,6 +89,27 @@ class Inventory extends React.Component {
     //         userInv: copy
     //     })
     // }
+=======
+    obtainItem = (name, obtainItem, amount) => {
+        let copy = this.state.userInv.slice();
+        if (copy.findIndex(item => item.name === name) != -1) {
+            copy[copy.findIndex(item => item.name === name)].amount += amount;
+        } else if (copy.findIndex(item => item.name === name) = -1) {
+            copy.push({
+                itemName: name,
+                itemType: obtainItem.itemType,
+                itemProperties: obtainItem.itemProperties,
+                amount: amount
+            });
+        } else {
+            console.log("error, corrupted user inventory, please contact admin");
+        }
+
+        this.setState({
+            userInv: copy
+        })
+    }
+>>>>>>> db14817e7a8c6ec62d4c2fba613b24a9861281fe
 
     removeItem = (name, amount) => {
         let copy = this.state.userInv.slice();
