@@ -1,66 +1,237 @@
+/* ---------------- Universal styling ---------------- */
 #gameTextBox {
   border-style: solid;
-  color: lightgray;
+  border-color: lightgray;
   width: 60%;
   position: fixed;
   top: 72%;
   left: 100px;
+  border-radius: 10px;
 }
 
+#health {
+  border-style: solid;
+  border-color: lightgray;
+  position: fixed;
+  top: 66%;
+  left: 100px;
+  width: 8%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.townHeader,
+.forestHeader,
+.mountainHeader,
+.shopHeader,
+.enemyHeader,
+.trapHeader,
+.rewardHeader {
+  text-align: center;
+  padding: 20px;
+}
+
+.card-body {
+  width: 10%;
+}
+
+#backButton {
+  position: fixed;
+  top: 10%;
+  left: 5%;
+}
+
+.action1 {
+  position: fixed;
+  top: 75%;
+  left: 70%;
+}
+
+.action2 {
+  position: fixed;
+  top: 75%;
+  left: 80%;
+}
+
+.action3 {
+  position: fixed;
+  top: 85%;
+  left: 70%;
+}
+
+.actionEscape {
+  position: fixed;
+  top: 85%;
+  left: 80%
+}
+
+#playerLootBox {
+  border-style: solid;
+  border-color: lightgray;
+  width: 15%;
+  position: fixed;
+  top: 30%;
+  left: 80%;
+  border-radius: 10px;
+}
 /* ---------------- Log-In page styling ---------------- */
 #homePageStyle {
   border-style: solid;
   border-color: lightslategrey;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 50px;
   border-radius: 20px;
-  width: 50%;
+  width: 30%;
+
 }
 
-#signInBtnStyle,
-#registerBtnStyle {
-  float: right;
-}
 
 #signIn {
-  margin-bottom: 5%;
+  margin-bottom: 10%;
 }
 
 #signIn, #register {
-  border-width: 30%;
   text-align: center;
 }
 
+
 .homeInput {
-  width: 35%;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
-/* ---------------- Town page styling ---------------- */
 
+  /* ---------------- Log Success styling ---------------- */
+ #logSuccessStyle {
+  border-style: solid;
+  border-color: lightslategrey;
+  text-align: center;
+  padding: 5%;
+  width: 35%;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+   }
+
+/* ---------------- Town page styling ---------------- */
 #townShopBtn {
   position: fixed;
-  left: 10%;
+  left: 15%;
+  top: 30%;
 }
 
 #townForestBtn {
   position: fixed;
-  left: 30%;
+  left: 35%;
+  top: 50%;
 }
 
 #townMountainBtn {
-  position: fixed;
-  left: 50%;
+  position: absolute;
+  left: 60%;
+  top: 20%;
 }
 
-#inventory {
-  border-style: solid;
-  border-color: lightslategrey;
+
+.invHeader {
+  text-align: center;
+}
+
+#toggleInventory {
+  position: absolute;
+  left: 90%;
+  top: 5%;
+}
+
+.forestDifficulty {
   position: fixed;
-  width: 22%;
-  height: 50%;
-  left: 72%;
-  top: 22%;
+  top: 55%;
+  left: 35%;
+}
+
+.mountainDifficulty {
+  position: fixed;
+  left: 60%;
+  top: 25%;
+}
+
+/* ---------------- Forest page styling ---------------- */
+.area1 {
+  position: fixed;
+  top: 25%;
+  left: 20%;
+}
+
+.areaOneInfo {
+  position: fixed;
+  top: 30%;
+  left: 20%;
+}
+
+.area2 {
+  position: fixed;
+  top: 40%;
+  left: 45%;
+}
+
+.areaTwoInfo {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+}
+
+.area3 {
+  position: fixed;
+  top: 20%;
+  left: 70%;
+}
+
+.areaThreeInfo {
+  position: fixed;
+  top: 25%;
+  left: 70%;
+}
+
+/* ---------------- Mountain page styling ---------------- */
+
+.area4 {
+  position: fixed;
+  top: 25%;
+  left: 20%;
+}
+
+.areaFourInfo {
+  position: fixed;
+  top: 30%;
+  left: 20%;
+}
+
+.area5 {
+  position: fixed;
+  top: 40%;
+  left: 45%;
+}
+
+.areaFiveInfo {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+}
+
+.area6 {
+  position: fixed;
+  top: 20%;
+  left: 70%;
+}
+
+.areaSixInfo {
+  position: fixed;
+  top: 25%;
+  left: 70%;
 }

@@ -14,14 +14,14 @@
 // export default Town;
 
 import React from 'react';
-import '../App.css'
+import '../../App.css'
 
  const Town = (props) => (
-    <div class="container">
+    <div className="container">
         <h2>Town</h2>
-        <button type="button" id="townShopBtn" class="btn btn-primary" onClick={props.handleShopButton}>Shop</button>
-        <button type="button" id="townForestBtn" class="btn btn-primary" onClick={props.handleForestButton}>Forest</button>
-        <button type="button" id="townMountainBtn" class="btn btn-primary" onClick={props.handleMountainButton}>Mountain</button>
+        <button type="button" id="townShopBtn" className="btn btn-primary" onClick={props.handleShopButton}>Shop</button>
+        <button type="button" id="townForestBtn" className="btn btn-primary" onClick={props.handleForestButton}>Forest</button>
+        <button type="button" id="townMountainBtn" className="btn btn-primary" onClick={props.handleMountainButton}>Mountain</button>
         <div id="inventory">
             <h2>Inventory</h2>
         </div>

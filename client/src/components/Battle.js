@@ -170,6 +170,10 @@ class Battle extends React.Component {
     })
   }
 
+  close = () => (
+    //push results
+    this.componentWillUnmount()
+  )
   // onUnMount(){db.PushResults/Rewards}
 
   render() {
@@ -200,6 +204,7 @@ class Battle extends React.Component {
               <Win
                 mon={this.state.mon}
                 char={this.state.char}
+                close={this.props.unmountBattle}
               /> :
               this.state.lose === true ?
                 <Lose
@@ -210,6 +215,7 @@ class Battle extends React.Component {
                   <Escape
                     mon={this.state.mon}
                     char={this.state.char}
+                    close={this.props.unmountBattle}
                   /> :
                   this.state.escapefail === true ?
                     <div>
