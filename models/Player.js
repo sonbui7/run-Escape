@@ -20,7 +20,7 @@ module.exports = function(connection, Sequelize) {
             default: "Town",
             validate: {
                 notEmpty: true,
-                isIn: [["Town", "Forest", "Cave"]]
+                isIn: [["Town", "Forest", "Mountain"]]
             }
         },
         encounterCount: {

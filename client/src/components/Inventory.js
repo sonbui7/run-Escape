@@ -118,6 +118,7 @@ class Inventory extends React.Component {
         })
     }
 
+
     removeItem = (name, amount) => {
         let copy = this.state.userInv.slice();
         if (copy.findIndex(item => item.name === name) !== -1) {

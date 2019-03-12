@@ -2,7 +2,7 @@ import React from 'react';
 
 import FightOrFlee from './BattleLogic/FightOrFlee';   //choices
 
-import Hit from './BattleLogic/Hit';                   //choose fight
+import Fight from './BattleLogic/Fight';                   //choose fight
 import Flee from './BattleLogic/Flee';                 //choose flee
 
 import Win from './BattleLogic/Win';                   //kill mon
@@ -12,6 +12,8 @@ import Lose from './BattleLogic/Lose';                 //char dies
 
 import info from "./BattleLogic/TestInfo.json";        //replace with axios
 
+import axios from "axios"
+// import Inventory from "./Inventory"
 
 class Battle extends React.Component {
 
@@ -41,26 +43,61 @@ class Battle extends React.Component {
     initialized: false,          //may be outmodded
     escape: false,
     escapefail: false,
+    monster: {},
     userInv: [],       //for inventory
     userEquipped: {}       //for inventory
   }
+
   ///Initializing and Mechanics///
-  getMon() { }    //db get mon stats
-  getChar() { }   //db get player stats
+  getMon() {
+    axios.get(`api/monsters/`)
+      .then(res => {
+        const monster = res.data;
+        this.setState({
+          mon: monster[1].monster_name,
+          monDmg: monster[1].stats.attack,
+          monSpd: monster[1].stats.speed,
+          monHp: monster[1].stats.hp
+        });
+      })
+
+  }    //db get mon stats
+
+  getChar() {
+    axios.get(`api/Player/`)
+      .then(res => {
+        const player = res.data;
+        this.setState({
+          char: player[1].username,
+          charDmg: player[1].stats.attack,
+          charSpd: player[1].stats.speed,
+          charHp: player[1].stats.hp
+        });
+      })
+
+  }    //db get player stats
 
   componentDidMount() {  //initialization {set Chp, dmg modded by equip, etc.}
+    //getChar & getMon
+    console.log('mounted')
+    // Inventory.componentDidMount()
+    this.getMon()
+    this.setState({
+      charChp: this.state.charHp,
+      monChp: this.state.monHp,
+      initialize: true
 
     //for inventory
-    axios.get("/api/users/" + sessionStorage.getItem("token")).then(user => {
-      this.setState({
-          userInv: user.inventory,
-          userEquipped: user.equipped,
-          charDmg: user.userStats.attack,
-          charHp: user.userStats.maxHp,
-          charChp: user.userStats.currentHp,
-          charSpd: user.userStats.speed,
-          monChp: this.state.monHp
-      });
+    // axios.get("/api/users/" + sessionStorage.getItem("token")).then(user => {
+    //   this.setState({
+    //       userInv: user.inventory,
+    //       userEquipped: user.equipped,
+    //       charDmg: user.userStats.attack,
+    //       charHp: user.userStats.maxHp,
+    //       charChp: user.userStats.currentHp,
+    //       charSpd: user.userStats.speed,
+    //       monChp: this.state.monHp
+    //   });
     })
   }
 
@@ -180,6 +217,11 @@ class Battle extends React.Component {
     })
   }
 
+  close = () => (
+    //push results
+    this.componentWillUnmount()
+  )
+  // onUnMount(){db.PushResults/Rewards}
   //all things inventory//
   
   saveStatsToDB = () => {
@@ -198,7 +240,7 @@ class Battle extends React.Component {
     let copy = this.state.userInv.slice();
     if (copy.findIndex(item => item.name === name) != -1) {
         copy[copy.findIndex(item => item.name === name)].amount += amount;
-    } else if (copy.findIndex(item => item.name === name) = -1) {
+    } else if (copy.findIndex(item => item.name === name) == -1) {
         copy.push({
             itemName: name,
             itemType: obtainItem.itemType,
@@ -240,7 +282,7 @@ usePotion = (name, item, amount) => {
   let copy = this.state.userInv.slice();
   if (copy.findIndex(item => item.name === name) != -1) {
     this.setState({
-      charChp: charChp + item.itemProperties.effect
+      charChp: this.state.charChp + item.itemProperties.effect
     });
   }
 
@@ -281,7 +323,7 @@ setStats = () => {
         <header className="battle-header">
           <div>
             {this.state.fight === true ?
-              <Hit
+              <Fight
                 monSpd={this.state.monIni}
                 monDmg={this.state.monDmg}
                 mon={this.state.mon}
@@ -303,6 +345,7 @@ setStats = () => {
               <Win
                 mon={this.state.mon}
                 char={this.state.char}
+                close={this.props.unmountBattle}
               /> :
               this.state.lose === true ?
                 <Lose
@@ -313,6 +356,7 @@ setStats = () => {
                   <Escape
                     mon={this.state.mon}
                     char={this.state.char}
+                    close={this.props.unmountBattle}
                   /> :
                   this.state.escapefail === true ?
                     <div>
@@ -331,3 +375,26 @@ setStats = () => {
 }
 
 export default Battle;
+
+
+/*
+import React from "react"
+
+ const Enemy = () => (
+    <div class="container">
+        <div id="health"></div>
+        <div id="gameTextBox">
+            <button type="button" class="btn btn-primary">Action 1</button>
+            <button type="button" class="btn btn-primary">Action 2</button>
+            <button type="button" class="btn btn-primary">Action 3</button>
+            <button type="button" class="btn btn-primary">Action 4</button>
+        </div>
+
+         <button type="button" class="btn btn-primary">Escape</button>
+        <div id="playerLootBox">Gold: <br /> Loot:</div>
+        <button type="button" class="btn btn-primary">Back to town</button>
+    </div>
+)
+
+ export default Enemy
+ */

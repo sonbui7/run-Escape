@@ -13,8 +13,24 @@ import Reward from "./components/ExploreLogic/Rewards"
 import Chest from "./components/ExploreLogic/Chest"
 
 
+import {BrowserRouter, Link, Switch, Route} from 'react-router-dom'
+/*
+  state = {
+    toDashboard: false,
+  }
+  handleSubmit = (user) => {
+    saveUser(user)
+      .then(() => this.setState(() => ({
+        toDashboard: true
+      })))
+  }
+  render() {
+    if (this.state.toDashboard === true) {
+      return <Redirect to='/dashboard' />
+    }
+*/
 
-class App extends Component {
+class App extends React.Component {
   state = {
     isLogIn: false,
     startGame: false,
@@ -25,6 +41,7 @@ class App extends Component {
     trapEncounter: false,
     rewardEncounter: false
   }
+///handle buttons
   // When Log-In is pressed
   handleLoginButton = (event) => {
     event.preventDefault()
@@ -83,88 +100,49 @@ class App extends Component {
     })
   }
 
-  render() {
-    if (this.state.isLogIn === false) {
-      return (
+///hnadle buttons
+  render() {  //Nav is for diagnostics, remove when done
+    return (
         <div>
-          <HomePage
-            handleLoginButton={this.handleLoginButton} />
-        </div>
-      )
-    } else if (this.state.isLogIn === true && this.state.startGame === false) {
-      return (
-        <div>
-          <LogSuccess
-            handleStartGameButton={this.handleStartGameButton} />
-        </div>
-      )
-    } else if (this.state.isLogIn === true &&
-       this.state.startGame === true &&
-        this.state.forestButton === false &&
-         this.state.mountainButton === false &&
-          this.state.shopButton === false) {
-      return (
-        <div>
-          <Town
-            handleForestButton={this.handleForestButton}
-            handleMountainButton={this.handleMountainButton}
-            handleShopButton={this.handleShopButton} />
-        </div>
-      )
-    } else if (this.state.shopButton === true) {
-      return (
-        <div><Shop
-          handleBackButton={this.handleBackButton} /></div>
-      )
-    } else if (this.state.forestButton === true &&
-       this.state.enemyEncounter === false &&
-        this.state.trapEncounter === false &&
-         this.state.rewardEncounter === false) {
-      return (
-        <div>
-          <Forest
-            handleBackButton={this.handleBackButton}
-            handleEnemyButton={this.handleEnemyButton}
-            handleTrapButton={this.handleTrapButton}
-            handleRewardButton={this.handleRewardButton} />
-        </div>
-      )
-    } else if (this.state.enemyEncounter === true) {
-      return (
-        <div>
-          <Enemy 
-            handleBackButton={this.handleBackButton}/>
+          <header className="MainHeader">
+            runEscape
+          </header>
+          <div className="displayLogic">
+            {this.state.isLogIn === false ?
+              <HomePage
+                handleLoginButton={this.handleLoginButton}
+              /> :
+              this.state.isLogIn === true &&
+              this.state.startGame === false ?
+              <LogSuccess
+                handleStartGameButton={this.handleStartGameButton}
+              /> :
+              this.state.isLogIn === true &&
+              this.state.startGame === true &&
+              this.state.forestButton === false &&
+              this.state.mountainButton === false &&
+              this.state.shopButton === false ?
+              <Town
+                handleForestButton={this.handleForestButton}
+                handleMountainButton={this.handleMountainButton}
+                handleShopButton={this.handleShopButton}
+              /> :
+              this.state.shopButton === true ?
+              <Shop
+                handleBackButton={this.handleBackButton}
+              /> :
+              this.state.forestButton === true ?
+              <Forest
+                handleBackButton={this.handleBackButton}
+              /> :
+              this.state.mountainButton === true ?
+              <Mountain
+                handleBackButton={this.handleBackButton}
+              /> :
+              <></>
+            }
           </div>
-      )
-    } else if (this.state.trapEncounter === true) {
-      return (
-      <div>
-        <Trap
-          handleBackButton={this.handleBackButton}/>
-      </div>
-      )
-    } else if (this.state.rewardEncounter === true) {
-      return (
-        <div>
-          <Reward 
-            handleBackButton={this.handleBackButton}/>
         </div>
-      )
-    }
-    else if (this.state.mountainButton === true) {
-      return (
-        <div>
-          <Mountain
-            handleBackButton={this.handleBackButton} />
-        </div>
-      )
-    }
+) } }
 
-
-
-
-  }
-
-}
-
-export default App;
+  export default App;
