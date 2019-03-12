@@ -1,5 +1,6 @@
 import React from 'react';
 import Explore from "../Explore"
+import Inventory from "../Inventory";
 
 const Forest = (props) => (
     <div id="forest">
@@ -44,7 +45,7 @@ const Forest = (props) => (
                             </button>
                         </div>
                         <div className="modal-body">
-                            <p>Insert items here</p>
+                            <Inventory />
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
