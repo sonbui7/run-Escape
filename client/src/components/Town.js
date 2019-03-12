@@ -22,13 +22,9 @@ const Town = (props) => (
         <div id="health">Health: </div>
 
         <div id="gameTextBox">
-            <br />
-            <br />
-            <br />
+
             <p>Welcome to run-Escape! Good luck getting through, its going to be a rough ride</p>
-            <br />
-            <br />
-            <br />
+            
         </div>
 
         <div id="inventory" >

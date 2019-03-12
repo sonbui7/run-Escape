@@ -7,13 +7,10 @@ const Trap = (props) => (
         <div id="health">Health: </div>
 
         <div id="gameTextBox">
-            <br />
-            <br />
-            <br />
+
             <p>I activate my trap card!</p>
-            <br />
-            <br />
-            <br />
+            <button type="button" className="btn btn-primary actionNext">Next</button>
+
         </div>
 
         <div className="actionButtonContainer">
@@ -24,16 +21,9 @@ const Trap = (props) => (
             <button type="button" className="btn btn-danger actionEscape" onClick={props.handleBackButton}>Escape</button>
         </div>
 
-        <div id="playerLootBox">Gold: 
-            <br /> 
-            <br />
-            <br />
-            <br />
-            Loot:
-            <br />
-            <br />
-            <br />
-            <br />
+        <div id="playerLootBox">
+            <p>Gold: </p>
+            <p>Loot: </p>
         </div>
     </div>
 )

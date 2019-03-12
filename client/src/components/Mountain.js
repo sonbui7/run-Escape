@@ -32,13 +32,9 @@ const Mountain = (props) => (
         <div id="health">Health: </div>
 
         <div id="gameTextBox">
-            <br />
-            <br />
-            <br />
+
             <p>Good luck scrub</p>
-            <br />
-            <br />
-            <br />
+            
         </div>
     </div>
 

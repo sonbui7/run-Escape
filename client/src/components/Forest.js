@@ -31,13 +31,9 @@ const Forest = (props) => (
         <div id="health">Health: </div>
 
         <div id="gameTextBox">
-            <br />
-            <br />
-            <br />
+
             <p>You have entered the forest. Which area would you like to adventure?</p>
-            <br />
-            <br />
-            <br />
+            
         </div>
     </div>
 )
