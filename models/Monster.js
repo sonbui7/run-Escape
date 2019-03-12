@@ -7,22 +7,8 @@ module.exports = function (connection, Sequelize) {
                 notEmpty: true
             }
         },
-        attack: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
-        speed: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
-        hp: {
-            type: Sequelize.INTEGER,
+        stats: {
+            type: Sequelize.JSON,
             allowNull: false,
             validate: {
                 notEmpty: true
@@ -36,13 +22,6 @@ module.exports = function (connection, Sequelize) {
             type: Sequelize.INTEGER,
             allowNull: true,
         },
-        xp: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        }
     });
 
     Monster.associate = function(models) {

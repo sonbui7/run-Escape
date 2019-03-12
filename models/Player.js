@@ -30,9 +30,9 @@ module.exports = function(connection, Sequelize) {
                 isInt: true
             }
         },
-        //hp, atk, equipped items, maybe def
+        //max hp, current hp, atk, equipped items, maybe def
         stats: {
-            type: Sequelize.TEXT,
+            type: Sequelize.JSON,
             allowNull: false,
             validate: {
                 notEmpty: true
@@ -40,12 +40,16 @@ module.exports = function(connection, Sequelize) {
         },
         //what's in the bag
         inventory: {
-            type: Sequelize.TEXT,
+            type: Sequelize.JSON,
             allowNull: false,
             default: "{}",
             validate: {
                 notEmpty: true
             }
+        },
+        equipped: {
+            type: Sequelize.JSON,
+            allowNull: true
         }
     });
 
