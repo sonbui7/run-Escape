@@ -25,12 +25,12 @@ const items = [
 ];
 
 
-db.sequelize.sync({ force: true}).then(function(){
+db.sequelize.sync({ force: true }).then(function () {
     db.Item.bulkCreate(items)
-        .then(function(rows){
+        .then(function (rows) {
             console.log(`\n\nINSERTED into database\n\n`);
             db.sequelize.close();
-        }).catch(function(err){
-            console.log({ err: err});
+        }).catch(function (err) {
+            console.log({ err: err });
         });
 });
