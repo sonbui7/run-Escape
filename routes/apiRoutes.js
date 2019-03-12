@@ -10,6 +10,15 @@ module.exports = function (app) {
         });
     });
 
+    app.get('/api/user', function (req, res) {
+        db.Player.findAll({
+        }).then(function (data) {
+            res.json(data);
+        }).catch(function (error) {
+            res.json({ error: error });
+        });
+    });
+
     //login
     app.post("/api/users", function (req, res) {
         db.Player.findOne({

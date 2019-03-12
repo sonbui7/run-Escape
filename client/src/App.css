@@ -5,8 +5,11 @@
   width: 60%;
   position: fixed;
   top: 72%;
-  left: 100px;
+  left: 80px;
   border-radius: 10px;
+  background:rgba(255,255,255,0.9);
+  color: black;
+  text-align: center;
 }
 
 #health {
@@ -14,10 +17,12 @@
   border-color: lightgray;
   position: fixed;
   top: 66%;
-  left: 100px;
+  left: 80px;
   width: 8%;
   border-radius: 10px;
   padding: 10px;
+  background:rgba(255,255,255,0.9);
+  color: black;
 }
 
 .townHeader,
@@ -27,8 +32,14 @@
 .enemyHeader,
 .trapHeader,
 .rewardHeader {
-  text-align: center;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 10%;
+  left: 50%;
   padding: 20px;
+  font-size: 64px;
+  width: 70%;
+  text-align: center;
 }
 
 .card-body {
@@ -41,40 +52,19 @@
   left: 5%;
 }
 
-.action1 {
-  position: fixed;
-  top: 75%;
-  left: 70%;
-}
-
-.action2 {
-  position: fixed;
-  top: 75%;
-  left: 80%;
-}
-
-.action3 {
-  position: fixed;
-  top: 85%;
-  left: 70%;
-}
-
-.actionEscape {
-  position: fixed;
-  top: 85%;
-  left: 80%
-}
-
 #playerLootBox {
   border-style: solid;
   border-color: lightgray;
   width: 15%;
   position: fixed;
-  top: 30%;
-  left: 80%;
+  top: 40%;
+  left: 76.5%;
   border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  background:rgba(255,255,255,0.8);
 }
-/* ---------------- Log-In page styling ---------------- */
+/* ---------------- Home page styling ---------------- */
 #homePageStyle {
   border-style: solid;
   border-color: lightslategrey;
@@ -85,9 +75,13 @@
   padding: 50px;
   border-radius: 20px;
   width: 30%;
-
+  background:rgba(255,255,255,0.7);
 }
 
+#backImg {
+  height: 890px;
+  width: 100%;
+}
 
 #signIn {
   margin-bottom: 10%;
@@ -104,6 +98,21 @@
   margin-bottom: 5px;
 }
 
+.gameTitle {
+  position: fixed;
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.homeHeader {
+  font-family: 'Allerta Stencil', sans-serif;
+  font-size: 36px;
+}
+
 
   /* ---------------- Log Success styling ---------------- */
  #logSuccessStyle {
@@ -113,29 +122,28 @@
   padding: 5%;
   width: 35%;
   position: fixed;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background:rgba(255,255,255,0.7);
   border-radius: 20px;
    }
+
+  #logSuccessBackground {
+    height: 890px;
+    width: 100%;
+  }
 
 /* ---------------- Town page styling ---------------- */
 #townShopBtn {
   position: fixed;
-  left: 15%;
-  top: 30%;
+  left: 70%;
+  top: 75%;
 }
 
-#townForestBtn {
-  position: fixed;
-  left: 35%;
-  top: 50%;
-}
-
-#townMountainBtn {
-  position: absolute;
-  left: 60%;
-  top: 20%;
+#townBackground {
+  width: 100%;
+  height: 890px;
 }
 
 
@@ -145,93 +153,137 @@
 
 #toggleInventory {
   position: absolute;
-  left: 90%;
-  top: 5%;
+  left: 80%;
+  top: 75%;
+}
+
+.forestDifficulty,
+.mountainDifficulty {
+  position: fixed;
+  background:rgba(255,255,255,0.8);
+  text-align: center;
 }
 
 .forestDifficulty {
-  position: fixed;
-  top: 55%;
-  left: 35%;
+  top: 35%;
+  left: 25%;
 }
 
 .mountainDifficulty {
-  position: fixed;
-  left: 60%;
-  top: 25%;
+  left: 70%;
+  top: 15%;
+  width: 11%;
 }
 
 /* ---------------- Forest page styling ---------------- */
-.area1 {
+
+#forest {
+  color: white;
+}
+
+#forestBackground {
+  height: 890px;
+  width: 100%;
+}
+
+.areaOneInfo,
+.areaTwoInfo,
+.areaThreeInfo {
+  text-align: center;
   position: fixed;
-  top: 25%;
-  left: 20%;
+  background:rgba(255,255,255,0.8);
+  color: black;
 }
 
 .areaOneInfo {
-  position: fixed;
-  top: 30%;
-  left: 20%;
-}
-
-.area2 {
-  position: fixed;
-  top: 40%;
-  left: 45%;
+  top: 47%;
+  left: 10%;
 }
 
 .areaTwoInfo {
-  position: fixed;
-  top: 45%;
-  left: 45%;
-}
-
-.area3 {
-  position: fixed;
-  top: 20%;
-  left: 70%;
+  top: 49%;
+  left: 50%;
 }
 
 .areaThreeInfo {
-  position: fixed;
-  top: 25%;
-  left: 70%;
+  top: 55%;
+  left: 75%;
 }
 
 /* ---------------- Mountain page styling ---------------- */
 
-.area4 {
+#mountainBackground {
+  width: 100%;
+  height: 890px;
+}
+
+.areaFourInfo,
+.areaFiveInfo,
+.areaSixInfo {
   position: fixed;
-  top: 25%;
-  left: 20%;
+  background:rgba(255,255,255,0.8);
+  text-align: center;
 }
 
 .areaFourInfo {
-  position: fixed;
   top: 30%;
   left: 20%;
 }
 
-.area5 {
-  position: fixed;
-  top: 40%;
-  left: 45%;
-}
 
 .areaFiveInfo {
-  position: fixed;
   top: 45%;
   left: 45%;
 }
 
-.area6 {
-  position: fixed;
-  top: 20%;
+
+.areaSixInfo {
+  top: 25%;
   left: 70%;
 }
 
-.areaSixInfo {
+/* ------------- Enemy, Trap, Reward page styling ------------- */
+
+.enemyHeader {
+  color: white;
+}
+
+.actionButtonContainer {
+  border-style: solid;
+  border-color: lightgray;
+  background:rgba(255,255,255,0.8);
+  position: fixed;
+  top: 72%;
+  left: 72%;
+  border-radius: 10px;
+}
+
+
+.actionEscape {
+  width: 47.8%;
+}
+
+.action1,
+.action2,
+.action3,
+.actionEscape {
+  padding: 15px 40px;
+  margin: 3px 3px;
+}
+
+.trapHeader,
+.enemyHeader,
+.rewardHeader {
+  color: white;
+}
+
+#enemyInfo {
   position: fixed;
   top: 25%;
-  left: 70%;
+  left: 80px;
+  width: 10%;
+  border-style: solid;
+  border-color: lightgray;
+  background:rgba(255,255,255,0.8);
+  border-radius: 10px;
 }

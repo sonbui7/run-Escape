@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import HomePage from "./components/HomePage"
-import Town from "./components/Locations/Town"
+import HomePage from "./components/Home"
+import Town from "./components/Town"
 import LogSuccess from "./components/LogSuccess"
-import Forest from "./components/Locations/Forest"
-import Mountain from "./components/Locations/Mountain"
-import Shop from "./components/TownLogic/Shop"
-import Enemy from "./components/Battle"
-import Trap from "./components/ExploreLogic/Trap"
-import Reward from "./components/ExploreLogic/Rewards"
+import Forest from "./components/Forest"
+import Mountain from "./components/Mountain"
+import Shop from "./components/Shop"
+import Enemy from "./components/Enemy"
+import Trap from "./components/Trap"
+import Reward from "./components/Reward"
 
 
 

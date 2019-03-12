@@ -12,6 +12,7 @@ import Lose from './BattleLogic/Lose';                 //char dies
 
 import info from "./BattleLogic/TestInfo.json";        //replace with axios
 
+import axios from "axios"
 // import Inventory from "./Inventory"
 
 class Battle extends React.Component {
@@ -37,16 +38,44 @@ class Battle extends React.Component {
     flee: false,
     initialized: false,          //may be outmodded
     escape: false,
-    escapefail: false
+    escapefail: false,
+    monster: {}
   }
+
   ///Initializing and Mechanics///
-  getMon() { }    //db get mon stats
-  getChar() { }   //db get player stats
+  getMon() {
+    axios.get(`api/monsters/`)
+      .then(res => {
+        const monster = res.data;
+        this.setState({
+          mon: monster[1].monster_name,
+          monDmg: monster[1].stats.attack,
+          monSpd: monster[1].stats.speed,
+          monHp: monster[1].stats.hp
+        });
+      })
+
+  }    //db get mon stats
+
+  getChar() {
+    axios.get(`api/Player/`)
+      .then(res => {
+        const player = res.data;
+        this.setState({
+          char: player[1].username,
+          charDmg: player[1].stats.attack,
+          charSpd: player[1].stats.speed,
+          charHp: player[1].stats.hp
+        });
+      })
+
+  }    //db get player stats
 
   componentDidMount() {  //initialization {set Chp, dmg modded by equip, etc.}
     //getChar & getMon
     console.log('mounted')
     // Inventory.componentDidMount()
+    this.getMon()
     this.setState({
       charChp: this.state.charHp,
       monChp: this.state.monHp,
@@ -255,5 +284,5 @@ import React from "react"
     </div>
 )
 
- export default Enemy 
+ export default Enemy
  */

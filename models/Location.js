@@ -3,10 +3,7 @@ module.exports = function(connection, Sequelize) {
         locationName: {
             type: Sequelize.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: true,
-                isAlphanumeric: true
-            }
+
         }
     });
 
