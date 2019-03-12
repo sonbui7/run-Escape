@@ -33,14 +33,12 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "bootstrap": "^4.3.1",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "if-env": "^1.0.4",
     "materialize-css": "^1.0.0-rc.2",
     "mysql2": "^1.6.5",
     "path": "^0.12.7",
-    "react-bootstrap": "^1.0.0-beta.5",
     "sequelize": "^4.42.1"
   }
 }
