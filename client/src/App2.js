@@ -104,9 +104,6 @@ class App extends React.Component {
   render() {  //Nav is for diagnostics, remove when done
     return (
         <div>
-          <header className="MainHeader">
-            runEscape
-          </header>
           <div className="displayLogic">
             {this.state.isLogIn === false ?
               <HomePage
