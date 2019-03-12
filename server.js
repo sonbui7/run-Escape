@@ -14,6 +14,12 @@ if (process.env.NODE_ENV === "production") {
 require(path.join(__dirname, "./routes/apiRoutes.js"))(app);
 // require(path.join(__dirname, "./routes/htmlRoutes.js"))(app);
 
+if (process.env.NODE_ENV === "production") {
+    app.get("*", function (req,res){
+        res.sendFile(__dirname + "/client/build/index.html")
+    })
+}
+
 db.sequelize.sync({force:false}).then(function(){
     app.listen(PORT, function(){
         console.log(`Ears on ${PORT} good buddy`)
