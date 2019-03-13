@@ -61,8 +61,6 @@ handleBattle = () => {
                 <></> :
                 (<div>
                 <button className="explore" onClick={this.explore} value="explore">Explore</button>
-                <button>Inventory</button>
-                <button>Return to Town</button>
                 </div>
                 )}
             </div>
