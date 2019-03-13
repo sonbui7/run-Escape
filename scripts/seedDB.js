@@ -41,7 +41,7 @@ const seedChar = [
             attack: 2,
             hp: 10,
             speed: 1,
-            chp: 10
+            currentHp: 10
         },
         inventory: [
             {
@@ -51,6 +51,96 @@ const seedChar = [
                 itemProperties: {
                     description: "Family Heirloom Undies",
                     effect: 1
+                }
+            },
+            {
+                amount: 1,
+                itemName: "Grandma's Flip-Flop",
+                itemType: "Weapon",
+                itemProperties: {
+                    description: "The mirror'd twin of this mythical weapon has long since been lost. The world has never seen a more brutal close combat weapon.",
+                    effect: 50
+                }
+            },
+            {
+                amount: 1,
+                itemName: "Grandma's Other Flip-Flop",
+                itemType: "Trinket",
+                itemProperties: {
+                    description: "Ever wonder how granma was moving about so fluidly and effortlessly while dishing out a beating with the other flip flop? I wonder how you managed to find this.",
+                    effect: 5
+                }
+            },
+            {
+                amount: 1,
+                itemName: "SunnyDemise",
+                itemType: "Potion",
+                itemProperties: {
+                    description: "Whatever this is, it's not orange juice.",
+                    effect: 5
+                }
+            },
+            {
+                amount: 1,
+                itemName: "Grandma's Mysterious Concoction",
+                itemType: "Potion",
+                itemProperties: {
+                    description: "You have no idea what's in it, but was told that it cures all illnesses.",
+                    effect: 60
+                }
+            },
+            {
+                amount: 1,
+                itemName: "Goblin Underwear",
+                itemType: "Misc",
+                itemProperties: {
+                    description: "Why are you collecting these?",
+                    effect: 0
+                }
+            },
+            {
+                amount: 1,
+                itemName: "Treasure Chest",
+                itemType: "Misc",
+                itemProperties: {
+                    description: "Empty inside, just like you.",
+                    effect: 0
+                }
+            },
+            {
+                amount: 1,
+                itemName: "Pet Rock",
+                itemType: "Misc",
+                itemProperties: {
+                    description: "Your best friend in this dangerous world. You named it Frank.",
+                    effect: 0
+                }
+            },
+            {
+                amount: 1,
+                itemName: "Cloudburst Techwear Set",
+                itemType: "Armor",
+                itemProperties: {
+                    description: "Somehow allows you to carry your entire house with you while simultaneously weighing less than 5 micro-grams. Doesn't stop bullets.",
+                    effect: 20
+                }
+            },
+            {
+                amount: 1,
+                itemName: "Socks N' Crocs",
+                itemType: "Armor",
+                itemProperties: {
+                    description: "Enemies shudder at the sight of this heinous combination, making their attacks significantly weaker.",
+                    effect: 35
+                }
+            },
+            {
+                amount: 1,
+                itemName: "Ketchup Stained Wife Beater",
+                itemType: "Armor",
+                itemProperties: {
+                    description: "This game does not support domestic violence, neither does this shirt.",
+                    effect: 30
                 }
             }
         ],
