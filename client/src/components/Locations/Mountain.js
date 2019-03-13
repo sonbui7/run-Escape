@@ -1,5 +1,6 @@
 import React from 'react';
 import Explore from "../Explore"
+import Inventory from "../Inventory"
 
  const Mountain = (props) => (
     <div id="mountain">
@@ -45,7 +46,7 @@ import Explore from "../Explore"
                             </button>
                         </div>
                         <div className="modal-body">
-                            <p>Insert items here</p>
+                        <Inventory />
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
