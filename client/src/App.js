@@ -16,6 +16,8 @@ import Chest from "./components/ExploreLogic/Chest"
 
 class App extends Component {
   state = {
+    userName: "",
+    userPassword: "",
     isLogIn: false,
     startGame: false,
     forestButton: false,
@@ -76,6 +78,13 @@ class App extends Component {
 
   /* --------------------------------- TO HERE ---------------------------------*/
 
+  handleLoginChange = (event) => {
+    event.preventDefault();
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
   handleLogIn = (event) => {
     event.preventDefault()
     this.setState({
@@ -88,6 +97,7 @@ class App extends Component {
       return (
         <div>
           <HomePage
+            handleLoginChange={this.handleLoginChange}
             handleLoginButton={this.handleLoginButton} />
         </div>
       )

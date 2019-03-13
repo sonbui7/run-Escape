@@ -13,12 +13,12 @@ const HomePage = (props) => (
             <p>Sign in below!</p>
             <div className="input-group-prepend homeInput">
                 <span className="input-group-text" id="basic-addon1"> <i className="fas fa-user-circle"></i> </span>
-                <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                <input onChange={props.handleLoginChange} name="userName" type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
             </div>
 
             <div className="input-group-prepend homeInput">
                 <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
-                <input type="text" className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" />
+                <input onChange={props.handleLoginChange} name="userPassword" type="text" className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" />
             </div>
             <button type="button" id="signInBtnStyle" className="btn btn-dark" onClick={props.handleLoginButton}>Sign in</button>
         </div>
