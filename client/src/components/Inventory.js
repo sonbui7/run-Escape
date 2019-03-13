@@ -147,7 +147,9 @@ class Inventory extends React.Component {
         let copy = this.state.userInv.slice();
         if (copy.findIndex(item => item.itemName === potion.itemName) !== -1) {
             copyStats.currentHp += potion.itemProperties.effect;
-
+            if(copyStats.currentHp += potion.itemProperties.effect > copyStats.maxHp) {
+                copyStats.currentHp = copyStats.maxHp
+            }
             console.log(copyStats);
             console.log(copyStats.currentHp);
             console.log(potion.itemProperties.effect);
