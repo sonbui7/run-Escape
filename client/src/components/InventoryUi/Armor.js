@@ -7,14 +7,15 @@ const Armor = (props) => {
     return <div className="container">
         {
             armor.map(armor => (
-                <div className="row itemRow">
-                    <div className="col col-3 itemName">{armor.itemName}</div>
-                    <div className="col col-2 itemAmount">X {armor.amount}</div>
-                    <div className="col col-6 itemDescription"><p>{armor.description}</p></div>
-                    <button val={JSON.stringify(armor)} onClick={props.handleArmor}>Equip</button>
+                <div>
+                    <div className="row itemRow">
+                        <div className="col col-3 itemName">{armor.itemName}</div>
+                        <div className="col col-2 itemAmount">X {armor.amount}</div>
+                        <div className="col col-6 itemDescription"><p>{armor.itemProperties.description}</p></div>
+                        <button val={JSON.stringify(armor)} onClick={props.handleArmor}>Equip</button>
+                    </div>
                     <hr></hr>
                 </div>
-                
             ))
         }
     </div>
