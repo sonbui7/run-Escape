@@ -21,30 +21,7 @@ class Inventory extends React.Component {
             currentHp: 10,
             speed: 1
         },
-        userInv: [{
-            "itemName": "Stick",
-            "itemType": "Weapon",
-            "itemProperties": {
-                "effect": 1,
-                "description": "It's just a stick."
-            }
-        },
-        {
-            "itemName": "Stick",
-            "itemType": "Weapon",
-            "itemProperties": {
-                "effect": 1,
-                "description": "It's just a stick."
-            }
-        },
-        {
-            "itemName": "Stick",
-            "itemType": "Weapon",
-            "itemProperties": {
-                "effect": 1,
-                "description": "It's just a stick."
-            }
-        }],
+        userInv: [],
         userStats: {
             attack: 0,
             maxHp: 0,
@@ -78,21 +55,23 @@ class Inventory extends React.Component {
                         attack: user.data.stats.attack,
                         speed: user.data.stats.speed,
                         maxHp: user.data.stats.hp,
-                        currentHp: user.data.stats.chp
+                        currentHp: user.data.stats.currentHp
                     },
                     userEquipped: user.data.equipped
                 });
             }).then(() => {
-                this.setStats();
+                this.setState({}, () => {
+                    this.setStats();
+                });
             });
-        this.setStats();
     }
 
     setStats = () => {
+        let copy = Object.assign({}, this.state.userStats);
         // console.log(this.state.userEquipped);
         for (let item in this.state.userEquipped) {
             console.log(this.state.userEquipped[item]);
-            let copy = Object.assign({}, this.state.userStats);
+            console.log(copy);
             if (this.state.userEquipped[item].itemType === "Weapon") {
                 copy.attack = this.state.userBase.attack + this.state.userEquipped[item].itemProperties.effect;
             } else if (this.state.userEquipped[item].itemType === "Armor") {
@@ -104,191 +83,208 @@ class Inventory extends React.Component {
             }
             this.setState({
                 userStats: copy
+            }, () => {
+                this.saveUserToDB();
             });
         }
-        this.saveUserToDB();
     }
 
 
 
-obtainItem = (obtainItem, amount) => {
-    let copy = this.state.userInv.slice();
-    if (copy.findIndex(item => item.name === obtainItem.itemName) !== -1) {
-        copy[copy.findIndex(item => item.name === obtainItem.itemName)].amount += amount;
-    } else if (copy.findIndex(item => item.name === obtainItem.itemName) === -1) {
+    obtainItem = (obtainItem, amount) => {
+        let copy = this.state.userInv.slice();
+        if (copy.findIndex(item => item.name === obtainItem.itemName) !== -1) {
+            copy[copy.findIndex(item => item.name === obtainItem.itemName)].amount += amount;
+        } else if (copy.findIndex(item => item.name === obtainItem.itemName) === -1) {
+            console.log(copy);
+            console.log(obtainItem);
+            copy.push({
+                itemName: obtainItem.itemName,
+                itemType: obtainItem.itemType,
+                itemProperties: obtainItem.itemProperties,
+                amount: obtainItem.amount
+            });
+            console.log(copy);
+            this.setState({
+                userInv: copy
+            });
+            console.log(this.state.userInv);
+        } else {
+            console.log("error, corrupted user inventory, please contact admin");
+        }
+
         console.log(copy);
-        console.log(obtainItem);
-        copy.push({
-            itemName: obtainItem.itemName,
-            itemType: obtainItem.itemType,
-            itemProperties: obtainItem.itemProperties,
-            amount: obtainItem.amount
-        });
-    } else {
-        console.log("error, corrupted user inventory, please contact admin");
+
     }
 
-    console.log(copy);
-    this.setState({
-        userInv: copy
-    })
-}
 
-
-removeItem = (name, amount) => {
-    let copy = this.state.userInv.slice();
-    let index = copy.findIndex(item => item.itemName === name);
-    if (index !== -1) {
-        copy[index].amount -= amount;
-        if(copy[index].amount <= 0) {
-            copy.splice(index, 1);
+    removeItem = (name, amount) => {
+        let copy = this.state.userInv.slice();
+        let index = copy.findIndex(item => item.itemName === name);
+        if (index !== -1) {
+            copy[index].amount -= amount;
+            console.log(copy[index].amount)
+            if (copy[index].amount <= 0) {
+                copy.splice(index, 1);
+                console.log(copy);
+            }
+        } else {
+            console.log("error, corrupted user inventory, please contact admin");
         }
-    } else {
-        console.log("error, corrupted user inventory, please contact admin");
-    }
 
-    this.setState({
-        userInv: copy
-    })
-}
+        console.log(copy);
 
-usePotion = (potion) => {
-    let copyStats = Object.assign({}, this.state.userStats);
-    let copy = this.state.userInv.slice();
-    if (copy.findIndex(item => item.name === potion.itemName) !== -1) {
-        copyStats.currentHp += potion.itemProperties.effect;
         this.setState({
-            userStats: copyStats
+            userInv: copy
+        }, () => {
+            this.saveUserToDB();
+        })
+        console.log(this.state.userInv);
+    }
+
+    usePotion = (potion) => {
+        let copyStats = Object.assign({}, this.state.userStats);
+        let copy = this.state.userInv.slice();
+        if (copy.findIndex(item => item.itemName === potion.itemName) !== -1) {
+            copyStats.currentHp += potion.itemProperties.effect;
+
+            console.log(copyStats);
+            console.log(copyStats.currentHp);
+            console.log(potion.itemProperties.effect);
+            this.setState({
+                userStats: copyStats
+            }, () => {
+                this.removeItem(potion.itemName, 1);
+            });
+        }
+    }
+
+    equipItem = (itemToEquip) => {
+        let copyEquip = Object.assign({}, this.state.userEquipped);
+        let unequippedItem = {};
+
+        for (let item in copyEquip) {
+            if (copyEquip[item].itemType === itemToEquip.itemType) {
+                console.log(copyEquip[item].itemType);
+                console.log(itemToEquip.itemType)
+                unequippedItem = copyEquip[item];
+                console.log(unequippedItem);
+                this.obtainItem(unequippedItem, 1);
+                copyEquip[item] = itemToEquip;
+                this.removeItem(itemToEquip.itemName, 1);
+            }
+        }
+        this.setState({
+            userEquipped: copyEquip
+        }, () => {
+            this.setStats();
         });
     }
 
-    this.removeItem(potion.itemName, 1);
-    this.saveUserToDB();
-}
-
-equipItem = (itemToEquip) => {
-    let copyEquip = Object.assign({}, this.state.userEquipped);
-    let unequippedItem = {};
-    
-    for (let item in copyEquip) {
-        if (copyEquip[item].itemType === itemToEquip.itemType) {
-            unequippedItem = copyEquip[item];
-            console.log(unequippedItem);
-            this.obtainItem(unequippedItem, 1);
-            copyEquip[item] = itemToEquip;
-            this.removeItem(itemToEquip.itemName, 1);
-        }
+    ////page handles
+    weaponPage = (e) => {
+        e.preventDefault();
+        this.setState({
+            currentPage: "Weapons"
+        });
     }
-    this.setState({
-        userEquipped: copyEquip
-    });
-    this.setStats();
-}
 
-////page handles
-weaponPage = (e) => {
-    e.preventDefault();
-    this.setState({
-        currentPage: "Weapons"
-    });
-}
+    armorPage = (e) => {
+        e.preventDefault();
+        this.setState({
+            currentPage: "Armor"
+        });
+    }
 
-armorPage = (e) => {
-    e.preventDefault();
-    this.setState({
-        currentPage: "Armor"
-    });
-}
+    trinketPage = (e) => {
+        e.preventDefault();
+        this.setState({
+            currentPage: "Trinkets"
+        });
+    }
 
-trinketPage = (e) => {
-    e.preventDefault();
-    this.setState({
-        currentPage: "Trinkets"
-    });
-}
+    potionPage = (e) => {
+        e.preventDefault();
+        this.setState({
+            currentPage: "Potions"
+        });
+    }
 
-potionPage = (e) => {
-    e.preventDefault();
-    this.setState({
-        currentPage: "Potions"
-    });
-}
-
-miscPage = (e) => {
-    e.preventDefault();
-    this.setState({
-        currentPage: "Misc"
-    });
-}
+    miscPage = (e) => {
+        e.preventDefault();
+        this.setState({
+            currentPage: "Misc"
+        });
+    }
 
 
-//// usage handles
-handleWeapons = (e) => {
-    e.preventDefault();
-    this.equipItem(JSON.parse(e.target.dataset.val));
-    this.setState({
-        currentPage: "Weapons"
-    });
-}
+    //// usage handles
+    handleWeapons = (e) => {
+        e.preventDefault();
+        this.equipItem(JSON.parse(e.target.getAttribute('val')));
+        this.setState({
+            currentPage: "Weapons"
+        });
+    }
 
-handleArmor = (e) => {
-    e.preventDefault();
-    this.equipItem(JSON.parse(e.target.dataset.val));
-    this.setState({
-        currentPage: "Armor"
-    });
-}
+    handleArmor = (e) => {
+        e.preventDefault();
+        this.equipItem(JSON.parse(e.target.getAttribute('val')));
+        this.setState({
+            currentPage: "Armor"
+        });
+    }
 
-handleTrinkets = (e) => {
-    e.preventDefault();
-    console.log(e.target.getAttribute('val'));
-    console.log(e.target);
-    this.equipItem(JSON.parse(e.target.getAttribute('val')));
-    this.setState({
-        currentPage: "Trinkets"
-    });
-}
+    handleTrinkets = (e) => {
+        e.preventDefault();
+        console.log(e.target.getAttribute('val'));
+        console.log(e.target);
+        this.equipItem(JSON.parse(e.target.getAttribute('val')));
+        this.setState({
+            currentPage: "Trinkets"
+        });
+    }
 
-handlePotions = (e) => {
-    e.preventDefault();
-    this.usePotion(JSON.parse(e.target.getAttribute('val')));
-    this.setState({
-        currentPage: "Potions"
-    });
-}
+    handlePotions = (e) => {
+        e.preventDefault();
+        this.usePotion(JSON.parse(e.target.getAttribute('val')));
+        this.setState({
+            currentPage: "Potions"
+        });
+    }
 
-handleMisc = (e) => {
-    e.preventDefault();
-    this.setState({
-        currentPage: "Misc"
-    })
-}
+    handleMisc = (e) => {
+        e.preventDefault();
+        this.setState({
+            currentPage: "Misc"
+        })
+    }
 
-render() {
-    return (
-        <div className="container">
-            <div className="row">
-                <div className="col col-12">
-                    <button onClick={this.weaponPage}>Weapons</button>
-                    <button onClick={this.armorPage}>Armor</button>
-                    <button onClick={this.trinketPage}>Trinkets</button>
-                    <button onClick={this.potionPage}>Potions</button>
-                    <button onClick={this.miscPage}>Misc Items</button>
+    render() {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col col-12">
+                        <button onClick={this.weaponPage}>Weapons</button>
+                        <button onClick={this.armorPage}>Armor</button>
+                        <button onClick={this.trinketPage}>Trinkets</button>
+                        <button onClick={this.potionPage}>Potions</button>
+                        <button onClick={this.miscPage}>Misc Items</button>
+                    </div>
+                </div>
+                <hr></hr>
+                <div>
+                    {this.state.currentPage === "Weapons" ? <Weapons userInv={this.state.userInv} handleWeapons={this.handleWeapons} />
+                        : this.state.currentPage === "Armor" ? <Armor userInv={this.state.userInv} handleArmor={this.handleArmor} />
+                            : this.state.currentPage === "Trinkets" ? <Trinkets userInv={this.state.userInv} handleTrinkets={this.handleTrinkets} />
+                                : this.state.currentPage === "Potions" ? <Potions userInv={this.state.userInv} handlePotions={this.handlePotions} />
+                                    : <Misc userInv={this.state.userInv} />}
                 </div>
             </div>
-            <hr></hr>
-            <div>
-                {this.state.currentPage === "Weapons" ? <Weapons userInv={this.state.userInv} handleWeapons={this.handleWeapons} />
-                    : this.state.currentPage === "Armor" ? <Armor userInv={this.state.userInv} handleArmor={this.handleArmor} />
-                        : this.state.currentPage === "Trinkets" ? <Trinkets userInv={this.state.userInv} handleTrinkets={this.handleTrinkets} />
-                            : this.state.currentPage === "Potions" ? <Potions userInv={this.state.userInv} handlePotions={this.handlePotions} />
-                                : <Misc userInv={this.state.userInv} />}
-            </div>
-        </div>
 
 
-    )
-}
+        )
+    }
 
 }
 
