@@ -49,11 +49,11 @@ handleBattle = () => {
                 <div>
                      {this.state.chance > 90 ?
                      <Chest /> :
-                     this.state.chance > 10 ?
-                     <Battle unmountBattle={this.handleBattle}/> :
                      this.state.chance > 5 ?
-                    <Nothing /> :
+                     <Battle unmountBattle={this.handleBattle}/> :
                      this.state.chance > 0 ?
+                    <Nothing /> :
+                     this.state.chance > 0.5 ?
                     <Trap /> : 
                     <Choices />}
                 </div>

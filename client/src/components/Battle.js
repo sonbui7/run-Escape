@@ -50,6 +50,16 @@ class Battle extends React.Component {
 
   ///Initializing and Mechanics///
   getMon() {
+
+    //in progress, random monster //
+    // axios.get(`api/monsters/1`)
+    //   .then(res => {
+    //     const monArray = res.data
+    //     console.log(monArray)
+    //   })
+    //in progress, random monster //
+
+    //thisworks//
     axios.get(`api/monsters/`)
       .then(res => {
         const monster = res.data;
@@ -60,25 +70,25 @@ class Battle extends React.Component {
           monHp: monster[1].stats.hp
         });
       })
-
+      //thisworks//
   }    //db get mon stats
 
   getChar() {
-    axios.get(`api/Player/`)
+    axios.get(`api/users/1`)
       .then(res => {
         const player = res.data;
         this.setState({
-          char: player[1].username,
-          charDmg: player[1].stats.attack,
-          charSpd: player[1].stats.speed,
-          charHp: player[1].stats.hp
+          char: player.username,
+          charDmg: player.stats.attack,
+          charSpd: player.stats.speed,
+          charHp: player.stats.hp
         });
       })
 
   }    //db get player stats
 
   componentDidMount() {  //initialization {set Chp, dmg modded by equip, etc.}
-    //getChar & getMon
+    this.getChar()
     console.log('mounted')
     // Inventory.componentDidMount()
     this.getMon()

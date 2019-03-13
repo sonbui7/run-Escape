@@ -20,7 +20,7 @@ const Town = (props) => (
         </div>
 
 
-        <div id="health">Health: </div>
+        {/* <div id="health">Health: </div> */}
 
         <div id="gameTextBox">
 

@@ -66,6 +66,19 @@ module.exports = function (app) {
         })
     })
 
+    //get monsters by location
+    app.get("/api/monsters/:id", function (req, res) {
+        db.Monster.findAll(req.body, {
+            where: {
+                LocationId: req.params.id
+            }
+        }).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    })
+    //get monsteres by location
 
     //get specific location and associated info
     app.get("/api/location", function (req, res) {

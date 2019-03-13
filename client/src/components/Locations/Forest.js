@@ -55,7 +55,7 @@ const Forest = (props) => (
             </div>
         </div>
 
-        <div id="health">Health: </div> {/*//calls health*/}
+        {/* <div id="health">Health: </div> //calls health */}
 
         <div id="gameTextBox">
 

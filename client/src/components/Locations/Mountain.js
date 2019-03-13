@@ -57,7 +57,7 @@ import Inventory from "../Inventory"
         </div>
         
 
-        <div id="health">Health: </div>
+        {/* <div id="health">Health: </div> */}
 
         <div id="gameTextBox">
 

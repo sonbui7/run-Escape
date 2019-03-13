@@ -104,7 +104,7 @@
 
 .gameTitle {
   position: absolute;
-  top: 9%;
+  top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Press Start 2P', cursive;
