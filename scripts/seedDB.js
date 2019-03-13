@@ -10,7 +10,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
-
+        LocationId: 1
     },
     {
         'monster_name': "kobold",
@@ -21,14 +21,118 @@ const seedMonster = [
         },
         'item': "old meat",
         'gold': 1,
+        LocationId: 2
+    },
+    {
+        'monster_name': "orc",
+        'stats': {
+            attack: 1,
+            hp: 10,
+            speed: 1
+        },
+        'item': "gobble berry",
+        'gold': 1,
+        LocationId: 1
+    },
+    {
+        'monster_name': "hobgoblin",
+        'stats': {
+            attack: 1,
+            hp: 10,
+            speed: 1
+        },
+        'item': "gobble berry",
+        'gold': 1,
+        LocationId: 1
+    },
+    {
+        'monster_name': "bugbear",
+        'stats': {
+            attack: 1,
+            hp: 10,
+            speed: 1
+        },
+        'item': "gobble berry",
+        'gold': 1,
+        LocationId: 1
+    },
+    {
+        'monster_name': "giant beetle",
+        'stats': {
+            attack: 1,
+            hp: 10,
+            speed: 1
+        },
+        'item': "gobble berry",
+        'gold': 1,
+        LocationId: 1
+    },
+    {
+        'monster_name': "homunculus",
+        'stats': {
+            attack: 1,
+            hp: 10,
+            speed: 1
+        },
+        'item': "gobble berry",
+        'gold': 1,
+        LocationId: 2
+    },
+    {
+        'monster_name': "boggle",
+        'stats': {
+            attack: 1,
+            hp: 10,
+            speed: 1
+        },
+        'item': "gobble berry",
+        'gold': 1,
+        LocationId: 2
+    },
+    {
+        'monster_name': "enraged pony",
+        'stats': {
+            attack: 1,
+            hp: 10,
+            speed: 1
+        },
+        'item': "gobble berry",
+        'gold': 1,
+        LocationId: 2
+    },
+    {
+        'monster_name': "axe beak",
+        'stats': {
+            attack: 1,
+            hp: 10,
+            speed: 1
+        },
+        'item': "gobble berry",
+        'gold': 1,
+        LocationId: 2
+    },
+    {
+        'monster_name': "gnoll",
+        'stats': {
+            attack: 1,
+            hp: 10,
+            speed: 1
+        },
+        'item': "gobble berry",
+        'gold': 1,
+        LocationId: 2
 
-    }
+    },
 ]
 
 const seedLoc = [
     {
 
         "locationName": 'forest',
+    },
+    {
+
+        "locationName": 'mountain',
     }
 ]
 
@@ -423,16 +527,6 @@ const items = [
 ];
 
 /*
-const seedItem = [
-    {
-        "id": "id",
-        "name": "name",
-        "cost": "cost",
-        "damage": "dmg" //(null),
-
-    }
-]
-
 const seedNPC = [
     {
         id: id,
@@ -483,17 +577,6 @@ db.sequelize.sync({ force: true }).then(function () {
 });
 
 db.sequelize.sync({ force: true }).then(function () {
-    db.Monster.bulkCreate(seedMonster)
-        .then(function (rows) {
-            console.log(`\n\nINSERTED into database\n\n`);
-            db.sequelize.close();
-        })
-        .catch(function (err) {
-            console.log("\n\nERROR:", err);
-        });
-})
-
-db.sequelize.sync({ force: true }).then(function () {
     db.Player.bulkCreate(seedChar)
         .then(function (rows) {
             console.log(`\n\nINSERTED into database\n\n`);
@@ -506,6 +589,18 @@ db.sequelize.sync({ force: true }).then(function () {
 
 db.sequelize.sync({ force: true }).then(function () {
     db.Location.bulkCreate(seedLoc)
+        .then(function (rows) {
+            console.log(`\n\nINSERTED into database\n\n`);
+            db.sequelize.close();
+        })
+        .catch(function (err) {
+            console.log("\n\nERROR:", err);
+        });
+})
+
+
+db.sequelize.sync({ force: true }).then(function () {
+    db.Monster.bulkCreate(seedMonster)
         .then(function (rows) {
             console.log(`\n\nINSERTED into database\n\n`);
             db.sequelize.close();
