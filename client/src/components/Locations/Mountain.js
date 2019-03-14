@@ -11,7 +11,7 @@ import Inventory from "../Inventory"
         <div>
             <div className="card-body card areaFourInfo">
             <button type="button" className="btn btn-danger area4"><i className="far fa-question-circle"></i> Area 4</button>
-                <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
+                <p className="card-text">Battle: 90% <br /> Treasure: 10%</p>
             </div>
         </div>
 
@@ -19,7 +19,7 @@ import Inventory from "../Inventory"
         <div>
             <div className="card-body card areaFiveInfo">
             <button type="button" className="btn btn-danger area5"><i className="far fa-question-circle"></i> Area 5</button>
-                <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
+                <p className="card-text">Battle: 90% <br /> Treasure: 10%</p>
             </div>
         </div>
 
@@ -27,7 +27,7 @@ import Inventory from "../Inventory"
         <div>
             <div className="card-body card areaSixInfo">
             <button type="button" className="btn btn-danger area6"><i className="far fa-question-circle"></i> Area 6</button>
-                <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
+                <p className="card-text">Battle: 90% <br /> Treasure: 10%</p>
             </div>
         </div>
 
@@ -61,7 +61,7 @@ import Inventory from "../Inventory"
 
         <div id="gameTextBox">
 
-            <Explore />
+            <Explore location={props.location}/>
             
         </div>
     </div>

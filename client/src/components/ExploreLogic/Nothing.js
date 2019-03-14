@@ -6,7 +6,6 @@ const Nothing = props => {
   return (
     <div className="Nothing">
     You didn't find anything 
-    with a {props.chance}
     </div>
 )}
 

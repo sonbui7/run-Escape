@@ -47,7 +47,7 @@ class Inventory extends React.Component {
     componentDidMount = () => {
         axios.get("/api/users/1" /*+ sessionStorage.getItem("token")*/)
             .then(user => {
-                console.log(user);
+                // console.log(user);
                 // axios.get(`api/Player/`)
                 this.setState({
                     userInv: user.data.inventory,
@@ -70,8 +70,8 @@ class Inventory extends React.Component {
         let copy = Object.assign({}, this.state.userStats);
         // console.log(this.state.userEquipped);
         for (let item in this.state.userEquipped) {
-            console.log(this.state.userEquipped[item]);
-            console.log(copy);
+            // console.log(this.state.userEquipped[item]);
+            // console.log(copy);
             if (this.state.userEquipped[item].itemType === "Weapon") {
                 copy.attack = this.state.userBase.attack + this.state.userEquipped[item].itemProperties.effect;
             } else if (this.state.userEquipped[item].itemType === "Armor") {
@@ -96,20 +96,20 @@ class Inventory extends React.Component {
         if (copy.findIndex(item => item.itemName === obtainItem.itemName) !== -1) {
             copy[copy.findIndex(item => item.itemName === obtainItem.itemName)].amount += amount;
         } else if (copy.findIndex(item => item.itemName === obtainItem.itemName) === -1) {
-            console.log(copy);
-            console.log(obtainItem);
+            // console.log(copy);
+            // console.log(obtainItem);
             copy.push({
                 itemName: obtainItem.itemName,
                 itemType: obtainItem.itemType,
                 itemProperties: obtainItem.itemProperties,
                 amount: obtainItem.amount
             });
-            console.log(copy);
+            // console.log(copy);
         } else {
             console.log("error, corrupted user inventory, please contact admin");
         }
 
-        console.log(copy, obtainItem);
+        // console.log(copy, obtainItem);
         this.setState({
             userInv: copy
         }, cb);
@@ -121,23 +121,23 @@ class Inventory extends React.Component {
         let index = copy.findIndex(item => item.itemName === name);
         if (index !== -1) {
             copy[index].amount -= amount;
-            console.log(copy[index].amount)
+            // console.log(copy[index].amount)
             if (copy[index].amount <= 0) {
                 copy.splice(index, 1);
-                console.log(copy);
+                // console.log(copy);
             }
         } else {
             console.log("error, corrupted user inventory, please contact admin");
         }
 
-        console.log(copy);
+        // console.log(copy);
 
         this.setState({
             userInv: copy
         }, () => {
             this.saveUserToDB();
         })
-        console.log(this.state.userInv);
+        // console.log(this.state.userInv);
     }
 
     usePotion = (potion) => {
@@ -148,9 +148,9 @@ class Inventory extends React.Component {
             if(copyStats.currentHp += potion.itemProperties.effect > copyStats.maxHp) {
                 copyStats.currentHp = copyStats.maxHp
             }
-            console.log(copyStats);
-            console.log(copyStats.currentHp);
-            console.log(potion.itemProperties.effect);
+            // console.log(copyStats);
+            // console.log(copyStats.currentHp);
+            // console.log(potion.itemProperties.effect);
             this.setState({
                 userStats: copyStats
             }, () => {
@@ -165,10 +165,10 @@ class Inventory extends React.Component {
 
         for (let item in copyEquip) {
             if (copyEquip[item].itemType === itemToEquip.itemType) {
-                console.log(copyEquip[item].itemType);
-                console.log(itemToEquip.itemType)
+                // console.log(copyEquip[item].itemType);
+                // console.log(itemToEquip.itemType)
                 unequippedItem = copyEquip[item];
-                console.log(unequippedItem);
+                // console.log(unequippedItem);
                 this.obtainItem(unequippedItem, 1, () => {
                     copyEquip[item] = itemToEquip;
                     this.removeItem(itemToEquip.itemName, 1);
@@ -238,8 +238,8 @@ class Inventory extends React.Component {
 
     handleTrinkets = (e) => {
         e.preventDefault();
-        console.log(e.target.getAttribute('val'));
-        console.log(e.target);
+        // console.log(e.target.getAttribute('val'));
+        // console.log(e.target);
         this.equipItem(JSON.parse(e.target.getAttribute('val')));
         this.setState({
             currentPage: "Trinkets"

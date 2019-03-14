@@ -6,7 +6,6 @@ import Nothing from "./ExploreLogic/Nothing";
 import Trap from "./ExploreLogic/Trap";
 import Choices from "./ExploreLogic/Choices"
 import Battle from "./Battle";
-import {BrowserRouter, Link, Switch, Redirect, Route} from 'react-router-dom'
 
 
 // import axios from "axios";
@@ -47,10 +46,10 @@ handleBattle = () => {
             <>            
             <div>
                 <div>
-                     {this.state.chance > 90 ?
+                     {this.state.chance > 101 ?
                      <Chest /> :
                      this.state.chance > 5 ?
-                     <Battle unmountBattle={this.handleBattle}/> :
+                     <Battle unmountBattle={this.handleBattle} location={this.props.location}/> :
                      this.state.chance > 0 ?
                     <Nothing /> :
                      this.state.chance > 0.5 ?

@@ -11,7 +11,7 @@ const Forest = (props) => (
         <div> {/*buttons goto area*/}
             <div className="card-body card areaOneInfo">
             <button type="button" className="btn btn-danger area1" onClick={props.handleEnemyButton}><i className="far fa-question-circle"></i> Area 1</button>
-                <p className="card-text">Battle: 100%  <br /> Reward: 100%</p>
+                <p className="card-text">Battle: 90%  <br /> Treasure: 10%</p>
             </div>
         </div>
 
@@ -19,14 +19,14 @@ const Forest = (props) => (
         <div>
             <div className="card-body card areaTwoInfo">
             <button type="button" className="btn btn-danger area2" onClick={props.handleTrapButton}><i className="far fa-question-circle"></i> Area 2</button>
-                <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
+                <p className="card-text">Battle: 90% <br /> Treasure: 10%</p>
             </div>
         </div>
 
         <div>
             <div className="card-body card areaThreeInfo">
             <button type="button" className="btn btn-danger area3" onClick={props.handleRewardButton}><i className="far fa-question-circle"></i> Area 3</button>
-                <p className="card-text">Battle: 100% <br /> Reward: 100%</p>
+                <p className="card-text">Battle: 90% <br /> Treasure: 10%</p>
             </div>
         </div>
 
@@ -61,7 +61,7 @@ const Forest = (props) => (
 
            {/* //call explore */}
         {/* //explore calls different routes, maybe explore has a default */}
-        <Explore />
+        <Explore location={props.location}/>
             
         </div>
     </div>

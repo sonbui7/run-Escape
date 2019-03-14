@@ -21,6 +21,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
+        LocationId: 1
     },
     {
         'monster_name': "kobold",
@@ -31,6 +32,7 @@ const seedMonster = [
         },
         'item': "old meat",
         'gold': 1,
+        LocationId: 1
     },
     {
         'monster_name': "orc",
@@ -41,6 +43,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
+        LocationId: 1
     },
     {
         'monster_name': "hobgoblin",
@@ -51,6 +54,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
+        LocationId: 1
     },
     {
         'monster_name': "bugbear",
@@ -61,6 +65,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
+        LocationId: 1
     },
     {
         'monster_name': "giant beetle",
@@ -71,6 +76,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
+        LocationId: 2
     },
     {
         'monster_name': "homunculus",
@@ -81,6 +87,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
+        LocationId: 1
     },
     {
         'monster_name': "boggle",
@@ -91,6 +98,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
+        LocationId: 2
     },
     {
         'monster_name': "enraged pony",
@@ -101,6 +109,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
+        LocationId: 2
     },
     {
         'monster_name': "axe beak",
@@ -111,6 +120,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
+        LocationId: 2
     },
     {
         'monster_name': "gnoll",
@@ -121,6 +131,7 @@ const seedMonster = [
         },
         'item': "gobble berry",
         'gold': 1,
+        LocationId: 2
     },
 ]
 

@@ -12,11 +12,7 @@ Project Description:
   i want...
    to log in and play
    be able to explore freely
-   make a toon
-   interact with NPC
-   Compare with other users
    fight Monsters
-   sell loot
    get stronger
 
 -IceBox

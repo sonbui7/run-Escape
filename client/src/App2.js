@@ -1,19 +1,18 @@
 import React from 'react';
 import './App.css';
-import Explore from './components/Explore'
-import Battle from "./components/Battle"
+// import Explore from './components/Explore'
+// import Battle from "./components/Battle"
 import Town from './components/Locations/Town'
 import HomePage from "./components/HomePage"
 import LogSuccess from "./components/LogSuccess"
 import Forest from "./components/Locations/Forest"
 import Mountain from "./components/Locations/Mountain"
 import Shop from "./components/TownLogic/Shop"
-import Trap from "./components/ExploreLogic/Trap"
-import Reward from "./components/ExploreLogic/Rewards"
-import Chest from "./components/ExploreLogic/Chest"
+// import Trap from "./components/ExploreLogic/Trap"
+// import Reward from "./components/ExploreLogic/Rewards"
+// import Chest from "./components/ExploreLogic/Chest"
 
 
-import {BrowserRouter, Link, Switch, Route} from 'react-router-dom'
 /*
   state = {
     toDashboard: false,
@@ -30,7 +29,7 @@ import {BrowserRouter, Link, Switch, Route} from 'react-router-dom'
     }
 */
 
-class App extends React.Component {
+class App extends React.Component  {
   state = {
     isLogIn: false,
     startGame: false,
@@ -120,6 +119,7 @@ class App extends React.Component {
               this.state.mountainButton === false &&
               this.state.shopButton === false ?
               <Town
+                location={0} /*hardcoded until session working*/
                 handleForestButton={this.handleForestButton}
                 handleMountainButton={this.handleMountainButton}
                 handleShopButton={this.handleShopButton}
@@ -130,10 +130,12 @@ class App extends React.Component {
               /> :
               this.state.forestButton === true ?
               <Forest
+                location={1} /*hardcoded until session working*/
                 handleBackButton={this.handleBackButton}
               /> :
               this.state.mountainButton === true ?
               <Mountain
+                location={2} /*hardcoded until session working*/
                 handleBackButton={this.handleBackButton}
               /> :
               <></>

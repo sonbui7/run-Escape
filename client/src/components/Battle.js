@@ -19,7 +19,7 @@ class Battle extends React.Component {
 
   state = {
     userBase: {
-      charDmg : 1,
+      charDmg: 1,
       charHp: 10,
       charSpd: 1
     },
@@ -28,7 +28,7 @@ class Battle extends React.Component {
     charSpd: info.CharSpd,
     charHp: info.CharHp,
     charChp: 0,
-    mon: info.MonName,
+    mon: "",
     monDmg: info.MonDmg,
     monSpd: info.MonSpd,
     monMods: info.MonMods,
@@ -49,71 +49,63 @@ class Battle extends React.Component {
   }
 
   ///Initializing and Mechanics///
-  getMon() {
-
+  getMon(cb) {
+    /*
+    get location
+    set to id
+    */
+    let mon = {}
+    let id = this.props.location
     //in progress, random monster //
-    // axios.get(`api/monsters/1`)
-    //   .then(res => {
-    //     const monArray = res.data
-    //     console.log(monArray)
-    //   })
-    //in progress, random monster //
-
-    //thisworks//
-    axios.get(`api/monsters/`)
+    axios.get(`api/monsters/${id}`)
       .then(res => {
-        const monster = res.data;
-        this.setState({
-          mon: monster[1].monster_name,
-          monDmg: monster[1].stats.attack,
-          monSpd: monster[1].stats.speed,
-          monHp: monster[1].stats.hp
-        });
+        const monArray = res.data
+        const randMon = (Math.floor(Math.random(monArray.length) * 10))
+        mon = {
+          mon: monArray[randMon].monster_name,
+          monDmg: monArray[randMon].stats.attack,
+          monSpd: monArray[randMon].stats.speed,
+          monHp: monArray[randMon].stats.hp
+        };
+        cb(mon)
       })
-      //thisworks//
   }    //db get mon stats
 
-  getChar() {
+  getChar(cb) {
     axios.get(`api/users/1`)
       .then(res => {
         const player = res.data;
-        this.setState({
+        const char = {
           char: player.username,
           charDmg: player.stats.attack,
           charSpd: player.stats.speed,
-          charHp: player.stats.hp
-        });
+          charHp: player.stats.currentHp
+        };
+        cb(char)
       })
 
   }    //db get player stats
 
   componentDidMount() {  //initialization {set Chp, dmg modded by equip, etc.}
-    this.getChar()
-    console.log('mounted')
-    // Inventory.componentDidMount()
-    this.getMon()
-    this.setState({
-      charChp: this.state.charHp,
-      monChp: this.state.monHp,
-      initialize: true
-
-    //for inventory
-    // axios.get("/api/users/" + sessionStorage.getItem("token")).then(user => {
-    //   this.setState({
-    //       userInv: user.inventory,
-    //       userEquipped: user.equipped,
-    //       charDmg: user.userStats.attack,
-    //       charHp: user.userStats.maxHp,
-    //       charChp: user.userStats.currentHp,
-    //       charSpd: user.userStats.speed,
-    //       monChp: this.state.monHp
-    //   });
+    this.getChar((char) => {
+      this.getMon((mon) => {
+        this.setState({
+          mon: mon.mon,
+          monDmg: mon.monDmg,
+          monSpd: mon.monSpd,
+          monChp: mon.monHp,
+          
+          char: char.char,
+          charDmg: char.charDmg,
+          charSpd: char.charSpd,
+          charChp: char.charHp
+        })
+      })
     })
   }
 
   getIni(toonSpd) {    //randomize initiative 
     let toonIni = (Math.random(toonSpd) * 100)
-    console.log(toonIni)
     return toonIni
   }
 
@@ -176,7 +168,6 @@ class Battle extends React.Component {
         }
       }
     }
-    console.log(`C: ${charChp}, M:${monChp}, Post Fight Loop`)
     this.setState({                                            //cleanup and prep for next loop
       monChp: monChp,
       charChp: charChp,
@@ -201,7 +192,6 @@ class Battle extends React.Component {
       charChp: charChp,
       escapefail: true                                        //conditional render path
     })
-    console.log(`C: ${charChp}, Escape Fail`)
   }
 
   // item = () => {} //implement use item here
@@ -233,7 +223,7 @@ class Battle extends React.Component {
   )
   // onUnMount(){db.PushResults/Rewards}
   //all things inventory//
-  
+
   saveStatsToDB = () => {
     axios.put("/api/users/" + sessionStorage.getItem("token"), {
       stats: {
@@ -248,81 +238,81 @@ class Battle extends React.Component {
 
   obtainItem = (name, obtainItem, amount) => {
     let copy = this.state.userInv.slice();
-    if (copy.findIndex(item => item.name === name) != -1) {
-        copy[copy.findIndex(item => item.name === name)].amount += amount;
-    } else if (copy.findIndex(item => item.name === name) == -1) {
-        copy.push({
-            itemName: name,
-            itemType: obtainItem.itemType,
-            itemProperties: obtainItem.itemProperties,
-            amount: amount
-        });
+    if (copy.findIndex(item => item.name === name) !== -1) {
+      copy[copy.findIndex(item => item.name === name)].amount += amount;
+    } else if (copy.findIndex(item => item.name === name) === -1) {
+      copy.push({
+        itemName: name,
+        itemType: obtainItem.itemType,
+        itemProperties: obtainItem.itemProperties,
+        amount: amount
+      });
     } else {
-        console.log("error, corrupted user inventory, please contact admin");
+      console.log("error, corrupted user inventory, please contact admin");
     }
 
     this.setState({
-        userInv: copy
+      userInv: copy
     })
-}
+  }
 
-removeItem = (name, amount) => {
-  let copy = this.state.userInv.slice();
-  if (copy.findIndex(item => item.name === name) != -1) {
+  removeItem = (name, amount) => {
+    let copy = this.state.userInv.slice();
+    if (copy.findIndex(item => item.name === name) !== -1) {
       copy[copy.findIndex(item => item.name === name)].amount -= amount;
-  } else {
+    } else {
       console.log("error, corrupted user inventory, please contact admin");
+    }
+
+    if (copy[copy.findIndex(item => item.name === name)].amount <= 0) {
+      copy.splice(copy.findIndex(item => item.name === name), 1);
+    }
+
+    this.saveInvToDB();
   }
 
-  if(copy[copy.findIndex(item => item.name === name)].amount <= 0) {
-      copy.splice(copy.findIndex(item => item.name === name),1);
-  }
-
-  this.saveInvToDB();
-}
-
-saveInvToDB = () => {
-  axios.put("/api/users/" + sessionStorage.getItem("token"), {
+  saveInvToDB = () => {
+    axios.put("/api/users/" + sessionStorage.getItem("token"), {
       inventory: this.state.userInv,
       equipped: this.state.userEquipped
-  });
-}
-
-usePotion = (name, item, amount) => {
-  let copy = this.state.userInv.slice();
-  if (copy.findIndex(item => item.name === name) != -1) {
-    this.setState({
-      charChp: this.state.charChp + item.itemProperties.effect
     });
   }
 
-  this.removeItem(name, amount);
-  this.saveInvToDB();
-  this.saveStatsToDB();
-}
+  usePotion = (name, item, amount) => {
+    let copy = this.state.userInv.slice();
+    if (copy.findIndex(item => item.name === name) !== -1) {
+      this.setState({
+        charChp: this.state.charChp + item.itemProperties.effect
+      });
+    }
 
-setStats = () => {
-  this.state.userEquipped.forEach(item => {
+    this.removeItem(name, amount);
+    this.saveInvToDB();
+    this.saveStatsToDB();
+  }
+
+  setStats = () => {
+    this.state.userEquipped.forEach(item => {
       if (item.itemType === "Weapon") {
-          const newCharDmg = this.state.userBase.charDmg + item.itemProperties.effect;
-          this.setState({
-            charDmg: newCharDmg
+        const newCharDmg = this.state.userBase.charDmg + item.itemProperties.effect;
+        this.setState({
+          charDmg: newCharDmg
         });
       } else if (item.itemType === "Armor") {
-          const newCharHp = this.state.userBase.charHp + item.itemProperties.effect;
-          this.setState({
-            charHp : newCharHp
-          })
+        const newCharHp = this.state.userBase.charHp + item.itemProperties.effect;
+        this.setState({
+          charHp: newCharHp
+        })
       } else if (item.itemType === "Trinket") {
-          const newCharSpd = this.state.userBase.charSpd + item.itemProperties.effect;
-          this.setState({
-            charSpd : newCharSpd
-          })
+        const newCharSpd = this.state.userBase.charSpd + item.itemProperties.effect;
+        this.setState({
+          charSpd: newCharSpd
+        })
       } else {
-          console.log("error, corrupted user inventory, please contact admin");
+        console.log("error, corrupted user inventory, please contact admin");
       }
-  })
-}
+    })
+  }
 
 
   // onUnMount(){db.PushResults}

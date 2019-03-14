@@ -3,7 +3,7 @@ import React from "react"
 const Chest = (props) => (
     <div id="rewardPage">
         <img id="forestBackground" src="https://external-preview.redd.it/vlSGrKKWy5_cjFBXuK0VaV_n_VTLEFWBSTbIyWv-owY.png?auto=webp&s=36ccd9b41badca9d37ba6eff64099e5c656900c6" alt="forestBackground" />
-        <h2 className="rewardHeader"><i class="fas fa-coins"></i> Treasure chest found!</h2>
+        <h2 className="rewardHeader"><i className="fas fa-coins"></i> Treasure chest found!</h2>
         <div id="health">Health: </div>
 
         <div id="gameTextBox">
